@@ -1,0 +1,64 @@
+#Archivos de configuracion del usuario
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+#Resultados de la compilacion
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+
+#Directorios de cache y opciones de Visual Studio
+.vs/
+.vscode/
+
+#Archivos de prueba y resultados
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+#Archivos generados por herramientas de Visual Studio
+*.i.c
+*.p.c
+*.i.h
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.vspscc
+*.vssscc
+
+#Archivos de bloqueo y artefactos
+project.lock.json
+project.fragment.lock.json
+artifacts/
+.dotnet/
+
+#Archivos de configuracion de herramientas de terceros
+_ReSharper*/
+*.DotSettings.user
+.JustCode
+_TeamCity*
+*.dotCover
+.axoCover/*
+*.coverage
+*.coveragexml
+
+
+#Paquetes NuGet
+packages/
