@@ -53,11 +53,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\frmInicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\frmInicio.Designer.cs">
+      <DependentUpon>frmInicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmLogin.cs">
       <SubType>Form</SubType>
@@ -67,6 +67,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\frmInicio.resx">
+      <DependentUpon>frmInicio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -79,6 +82,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Fuentes\Roboto\Roboto-Black.ttf" />
+    <None Include="Fuentes\Roboto\Roboto-BlackItalic.ttf" />
+    <None Include="Fuentes\Roboto\Roboto-Bold.ttf" />
+    <None Include="Fuentes\Roboto\Roboto-BoldItalic.ttf" />
+    <None Include="Fuentes\Roboto\Roboto-Italic.ttf" />
+    <None Include="Fuentes\Roboto\Roboto-Light.ttf" />
+    <None Include="Fuentes\Roboto\Roboto-LightItalic.ttf" />
+    <None Include="Fuentes\Roboto\Roboto-Medium.ttf" />
+    <None Include="Fuentes\Roboto\Roboto-MediumItalic.ttf" />
+    <None Include="Fuentes\Roboto\Roboto-Regular.ttf" />
+    <None Include="Fuentes\Roboto\Roboto-Thin.ttf" />
+    <None Include="Fuentes\Roboto\Roboto-ThinItalic.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -94,7 +109,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modales\" />
+    <Folder Include="Forms\FormUsuario\" />
+    <Folder Include="Modales\mdError\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaSoporte\CapaSoporte.csproj">
+      <Project>{7a4b123e-5975-44a6-9628-087faf0f4966}</Project>
+      <Name>CapaSoporte</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
