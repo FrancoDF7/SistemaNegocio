@@ -1,4 +1,7 @@
-﻿using CapaSoporte;
+﻿using CapaPresentacion.Forms.FormNegocio;
+using CapaPresentacion.Forms.FormUsuario;
+using CapaSoporte;
+using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +16,11 @@ namespace CapaPresentacion.Forms
 {
     public partial class frmInicio : Form
     {
+        //private static Usuario usuarioActual;
+        private static IconButton BotonSeccion = null;
+        private static Form FormularioActivo = null;
+        MoverForm moverForm = new MoverForm();
+
         public frmInicio()
         {
             InitializeComponent();
@@ -23,46 +31,91 @@ namespace CapaPresentacion.Forms
             InicializarSubmenus();
         }
 
+
+        #region Eventos mover formulario
         private void panelBarraTitulo_MouseDown(object sender, MouseEventArgs e)
-        {
-            MoverForm moverForm = new MoverForm();
+        {            
             moverForm.MoverFormulario(this.Handle);
         }
+        private void lblnombrenegocio_MouseDown(object sender, MouseEventArgs e)
+        {
+            moverForm.MoverFormulario(this.Handle);
+        }
+        private void piclogonegocio_MouseDown(object sender, MouseEventArgs e)
+        {
+            moverForm.MoverFormulario(this.Handle);
+        }
+        #endregion
 
+
+
+        #region Eventos botones Productos
         private void btnProductos_Click(object sender, EventArgs e)
         {
             MostrarSubmenu(panelProductosSubmenu);
         }
+        #endregion
 
+        #region Eventos botones Clientes
         private void btnClientes_Click(object sender, EventArgs e)
         {
             MostrarSubmenu(panelClientesSubmenu);
         }
+        #endregion
 
+        #region Eventos botones Proveedores
         private void btnProveedores_Click(object sender, EventArgs e)
         {
             MostrarSubmenu(panelProveedoresSubmenu);
         }
+        #endregion
 
+        #region Eventos botones Ventas
         private void btnVentas_Click(object sender, EventArgs e)
         {
             MostrarSubmenu(panelVentasSubmenu);
         }
+        #endregion
 
+        #region Eventos botones Compras
         private void btnCompras_Click(object sender, EventArgs e)
         {
             MostrarSubmenu(panelComprasSubmenu);
         }
+        #endregion
 
+        #region Eventos botones Usuarios
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
            MostrarSubmenu(panelUsuariosSubmenu);
         }
+        private void btnUsuariosCrear_Click(object sender, EventArgs e)
+        {
+            frmCrearUsuario frmCrearUsuario = new frmCrearUsuario();
+            frmCrearUsuario.ShowDialog();
+        }
+        private void btnUsuariosPerfil_Click(object sender, EventArgs e)
+        {
+            frmEditarPerfil frmEditarPerfil = new frmEditarPerfil();
+            frmEditarPerfil.ShowDialog();
+        }
+        #endregion
 
+        #region Eventos botones Contabilidad
         private void btnContabilidad_Click(object sender, EventArgs e)
         {
             MostrarSubmenu(panelContabilidadSubmenu);
+            AbrirFormulario(btnContabilidad, new frmEditarPerfil());
         }
+        #endregion
+
+        #region Eventos botones Negocio
+        private void btnNegocio_Click(object sender, EventArgs e)
+        {
+            MostrarSubmenu(panelNegocioSubmenu);
+            AbrirFormulario(btnNegocio, new frmNegocio());
+        }
+        #endregion
 
 
         #region Metodos
@@ -77,6 +130,8 @@ namespace CapaPresentacion.Forms
             panelComprasSubmenu.Visible = false;
             panelVentasSubmenu.Visible = false;
             panelUsuariosSubmenu.Visible = false;
+            panelContabilidadSubmenu.Visible = false;
+            panelNegocioSubmenu.Visible = false;
         }
         
         //Si el submenu no esta visible lo muestra y oculta el que este visible,
@@ -120,8 +175,46 @@ namespace CapaPresentacion.Forms
             {
                 panelUsuariosSubmenu.Visible = false;
             }
+            if(panelContabilidadSubmenu.Visible == true)
+            {
+                panelContabilidadSubmenu.Visible = false;
+            }
+            if (panelNegocioSubmenu.Visible == true)
+            {
+                panelNegocioSubmenu.Visible = false;
+            }
         }
+
+
         #endregion
+
+
+        private void AbrirFormulario(IconButton boton, Form formulario)
+        {
+            if (BotonSeccion != null)
+            {
+                BotonSeccion.BackColor = Color.White;
+            }
+
+            boton.BackColor = Color.FromArgb(0, 192, 192);
+            BotonSeccion = boton;
+
+            if (FormularioActivo != null)
+            {
+                //Si es que actualmente hay un formulario activo lo cierra
+                FormularioActivo.Close();
+            }
+
+            FormularioActivo = formulario;
+            formulario.TopLevel = false;
+            formulario.FormBorderStyle = FormBorderStyle.None;
+            formulario.Dock = DockStyle.Fill;
+            formulario.BackColor = Color.White;
+
+            panelCentral.Controls.Add(formulario);
+            formulario.Show();
+
+        }
 
         #endregion
 

@@ -53,6 +53,24 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\FormNegocio\frmNegocio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormNegocio\frmNegocio.Designer.cs">
+      <DependentUpon>frmNegocio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormUsuario\frmCrearUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormUsuario\frmCrearUsuario.Designer.cs">
+      <DependentUpon>frmCrearUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormUsuario\frmEditarPerfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormUsuario\frmEditarPerfil.Designer.cs">
+      <DependentUpon>frmEditarPerfil.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmInicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +85,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FormNegocio\frmNegocio.resx">
+      <DependentUpon>frmNegocio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormUsuario\frmEditarPerfil.resx">
+      <DependentUpon>frmEditarPerfil.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmInicio.resx">
       <DependentUpon>frmInicio.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,17 +107,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Fuentes\Roboto\Roboto-Black.ttf" />
-    <None Include="Fuentes\Roboto\Roboto-BlackItalic.ttf" />
     <None Include="Fuentes\Roboto\Roboto-Bold.ttf" />
-    <None Include="Fuentes\Roboto\Roboto-BoldItalic.ttf" />
-    <None Include="Fuentes\Roboto\Roboto-Italic.ttf" />
     <None Include="Fuentes\Roboto\Roboto-Light.ttf" />
-    <None Include="Fuentes\Roboto\Roboto-LightItalic.ttf" />
     <None Include="Fuentes\Roboto\Roboto-Medium.ttf" />
-    <None Include="Fuentes\Roboto\Roboto-MediumItalic.ttf" />
     <None Include="Fuentes\Roboto\Roboto-Regular.ttf" />
     <None Include="Fuentes\Roboto\Roboto-Thin.ttf" />
-    <None Include="Fuentes\Roboto\Roboto-ThinItalic.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -109,10 +127,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Forms\FormUsuario\" />
     <Folder Include="Modales\mdError\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj">
+      <Project>{08b07e65-83a2-4f68-9b43-18a139c038ee}</Project>
+      <Name>CapaEntidad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaNegocio\CapaNegocio.csproj">
+      <Project>{51590F37-3E1D-4B3D-A345-EDD4DF32200D}</Project>
+      <Name>CapaNegocio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CapaSoporte\CapaSoporte.csproj">
       <Project>{7a4b123e-5975-44a6-9628-087faf0f4966}</Project>
       <Name>CapaSoporte</Name>
