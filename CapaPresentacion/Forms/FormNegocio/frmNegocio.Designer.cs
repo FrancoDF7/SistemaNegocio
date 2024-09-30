@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.BarraTitulo = new System.Windows.Forms.Panel();
-            this.lblNegoci = new System.Windows.Forms.Label();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            this.lblNegocio = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtnombrenegocio = new System.Windows.Forms.TextBox();
             this.lblNombreNegocio = new System.Windows.Forms.Label();
@@ -66,25 +66,14 @@
             // BarraTitulo
             // 
             this.BarraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.BarraTitulo.Controls.Add(this.lblNegoci);
             this.BarraTitulo.Controls.Add(this.iconPictureBox1);
+            this.BarraTitulo.Controls.Add(this.lblNegocio);
             this.BarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.BarraTitulo.Location = new System.Drawing.Point(0, 0);
             this.BarraTitulo.Margin = new System.Windows.Forms.Padding(2);
             this.BarraTitulo.Name = "BarraTitulo";
             this.BarraTitulo.Size = new System.Drawing.Size(897, 28);
             this.BarraTitulo.TabIndex = 116;
-            // 
-            // lblNegoci
-            // 
-            this.lblNegoci.AutoSize = true;
-            this.lblNegoci.Font = new System.Drawing.Font("Consolas", 14F, System.Drawing.FontStyle.Bold);
-            this.lblNegoci.ForeColor = System.Drawing.Color.White;
-            this.lblNegoci.Location = new System.Drawing.Point(410, 2);
-            this.lblNegoci.Name = "lblNegoci";
-            this.lblNegoci.Size = new System.Drawing.Size(80, 22);
-            this.lblNegoci.TabIndex = 92;
-            this.lblNegoci.Text = "Negocio";
             // 
             // iconPictureBox1
             // 
@@ -93,12 +82,23 @@
             this.iconPictureBox1.IconColor = System.Drawing.Color.White;
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox1.IconSize = 28;
-            this.iconPictureBox1.Location = new System.Drawing.Point(386, 1);
+            this.iconPictureBox1.Location = new System.Drawing.Point(385, 2);
             this.iconPictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(37, 28);
+            this.iconPictureBox1.Size = new System.Drawing.Size(28, 28);
             this.iconPictureBox1.TabIndex = 91;
             this.iconPictureBox1.TabStop = false;
+            // 
+            // lblNegocio
+            // 
+            this.lblNegocio.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNegocio.ForeColor = System.Drawing.Color.White;
+            this.lblNegocio.Location = new System.Drawing.Point(3, 2);
+            this.lblNegocio.Name = "lblNegocio";
+            this.lblNegocio.Size = new System.Drawing.Size(894, 22);
+            this.lblNegocio.TabIndex = 92;
+            this.lblNegocio.Text = "Negocio";
+            this.lblNegocio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
             // 
@@ -119,7 +119,7 @@
             this.txtnombrenegocio.Name = "txtnombrenegocio";
             this.txtnombrenegocio.ShortcutsEnabled = false;
             this.txtnombrenegocio.Size = new System.Drawing.Size(195, 22);
-            this.txtnombrenegocio.TabIndex = 120;
+            this.txtnombrenegocio.TabIndex = 1;
             this.txtnombrenegocio.Text = "Pepe Company";
             // 
             // lblNombreNegocio
@@ -140,7 +140,7 @@
             this.txtprovincia.Name = "txtprovincia";
             this.txtprovincia.ShortcutsEnabled = false;
             this.txtprovincia.Size = new System.Drawing.Size(192, 22);
-            this.txtprovincia.TabIndex = 125;
+            this.txtprovincia.TabIndex = 7;
             this.txtprovincia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtprovincia_KeyPress);
             // 
             // label1
@@ -161,7 +161,7 @@
             this.txtpartido.Name = "txtpartido";
             this.txtpartido.ShortcutsEnabled = false;
             this.txtpartido.Size = new System.Drawing.Size(192, 22);
-            this.txtpartido.TabIndex = 127;
+            this.txtpartido.TabIndex = 9;
             this.txtpartido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtpartido_KeyPress);
             // 
             // label2
@@ -182,7 +182,7 @@
             this.txtlocalidad.Name = "txtlocalidad";
             this.txtlocalidad.ShortcutsEnabled = false;
             this.txtlocalidad.Size = new System.Drawing.Size(192, 22);
-            this.txtlocalidad.TabIndex = 129;
+            this.txtlocalidad.TabIndex = 8;
             this.txtlocalidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtlocalidad_KeyPress);
             // 
             // label3
@@ -203,7 +203,7 @@
             this.txtcalle.Name = "txtcalle";
             this.txtcalle.ShortcutsEnabled = false;
             this.txtcalle.Size = new System.Drawing.Size(192, 22);
-            this.txtcalle.TabIndex = 131;
+            this.txtcalle.TabIndex = 10;
             this.txtcalle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcalle_KeyPress);
             // 
             // label4
@@ -224,7 +224,7 @@
             this.txttelefono.Name = "txttelefono";
             this.txttelefono.ShortcutsEnabled = false;
             this.txttelefono.Size = new System.Drawing.Size(192, 22);
-            this.txttelefono.TabIndex = 137;
+            this.txttelefono.TabIndex = 2;
             this.txttelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txttelefono_KeyPress);
             // 
             // label7
@@ -245,7 +245,7 @@
             this.txtcuit1.Name = "txtcuit1";
             this.txtcuit1.ShortcutsEnabled = false;
             this.txtcuit1.Size = new System.Drawing.Size(34, 22);
-            this.txtcuit1.TabIndex = 139;
+            this.txtcuit1.TabIndex = 3;
             this.txtcuit1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtcuit1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcuit1_KeyPress);
             // 
@@ -257,7 +257,7 @@
             this.txtcuit2.Name = "txtcuit2";
             this.txtcuit2.ShortcutsEnabled = false;
             this.txtcuit2.Size = new System.Drawing.Size(103, 22);
-            this.txtcuit2.TabIndex = 140;
+            this.txtcuit2.TabIndex = 4;
             this.txtcuit2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtcuit2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcuit2_KeyPress);
             // 
@@ -269,7 +269,7 @@
             this.txtcuit3.Name = "txtcuit3";
             this.txtcuit3.ShortcutsEnabled = false;
             this.txtcuit3.Size = new System.Drawing.Size(34, 22);
-            this.txtcuit3.TabIndex = 141;
+            this.txtcuit3.TabIndex = 5;
             this.txtcuit3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtcuit3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcuit3_KeyPress);
             // 
@@ -301,7 +301,7 @@
             this.dtpFechaActividades.Location = new System.Drawing.Point(272, 140);
             this.dtpFechaActividades.Name = "dtpFechaActividades";
             this.dtpFechaActividades.Size = new System.Drawing.Size(166, 20);
-            this.dtpFechaActividades.TabIndex = 144;
+            this.dtpFechaActividades.TabIndex = 6;
             // 
             // label10
             // 
@@ -348,7 +348,7 @@
             this.btnsubir.Name = "btnsubir";
             this.btnsubir.Padding = new System.Windows.Forms.Padding(16, 0, 0, 0);
             this.btnsubir.Size = new System.Drawing.Size(115, 34);
-            this.btnsubir.TabIndex = 151;
+            this.btnsubir.TabIndex = 12;
             this.btnsubir.Text = "Subir";
             this.btnsubir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnsubir.UseVisualStyleBackColor = false;
@@ -377,7 +377,7 @@
             this.btnguardarcambios.Location = new System.Drawing.Point(177, 299);
             this.btnguardarcambios.Name = "btnguardarcambios";
             this.btnguardarcambios.Size = new System.Drawing.Size(150, 40);
-            this.btnguardarcambios.TabIndex = 122;
+            this.btnguardarcambios.TabIndex = 11;
             this.btnguardarcambios.Text = "Guardar cambios";
             this.btnguardarcambios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnguardarcambios.UseVisualStyleBackColor = false;
@@ -441,7 +441,6 @@
             this.Text = "frmNegocio";
             this.Load += new System.EventHandler(this.frmNegocio_Load);
             this.BarraTitulo.ResumeLayout(false);
-            this.BarraTitulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo1)).EndInit();
             this.ResumeLayout(false);
@@ -452,7 +451,7 @@
         #endregion
 
         private System.Windows.Forms.Panel BarraTitulo;
-        private System.Windows.Forms.Label lblNegoci;
+        private System.Windows.Forms.Label lblNegocio;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtnombrenegocio;

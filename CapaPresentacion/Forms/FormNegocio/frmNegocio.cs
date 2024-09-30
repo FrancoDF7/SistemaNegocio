@@ -17,8 +17,6 @@ namespace CapaPresentacion.Forms.FormNegocio
 {
     public partial class frmNegocio : Form
     {
-        ValidacionKeyPress vkp = new ValidacionKeyPress();
-
         public frmNegocio()
         {
             InitializeComponent();
@@ -112,35 +110,35 @@ namespace CapaPresentacion.Forms.FormNegocio
         #region Validaciones Evento KeyPress
         private void txtcuit1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            vkp.SoloNumerosEnteros(e);
+            ValidacionKeyPress.SoloNumerosEnteros(e);
         }
         private void txtcuit2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            vkp.SoloNumerosEnteros(e);
+            ValidacionKeyPress.SoloNumerosEnteros(e);
         }
         private void txtcuit3_KeyPress(object sender, KeyPressEventArgs e)
         {
-            vkp.SoloNumerosEnteros(e);
+            ValidacionKeyPress.SoloNumerosEnteros(e);
         }
         private void txttelefono_KeyPress(object sender, KeyPressEventArgs e)
         {
-            vkp.SoloNumerosEnteros(e);
+            ValidacionKeyPress.SoloNumerosEnteros(e);
         }
         private void txtprovincia_KeyPress(object sender, KeyPressEventArgs e)
         {
-            vkp.SoloLetrasYNumeros(e);
+            ValidacionKeyPress.SoloLetrasYNumeros(e);
         }
         private void txtpartido_KeyPress(object sender, KeyPressEventArgs e)
         {
-            vkp.SoloLetrasYNumeros(e);
+            ValidacionKeyPress.SoloLetrasYNumeros(e);
         }
         private void txtlocalidad_KeyPress(object sender, KeyPressEventArgs e)
         {
-            vkp.SoloLetrasYNumeros(e);
+            ValidacionKeyPress.SoloLetrasYNumeros(e);
         }
         private void txtcalle_KeyPress(object sender, KeyPressEventArgs e)
         {
-            vkp.SoloLetrasYNumeros(e);
+            ValidacionKeyPress.SoloLetrasYNumeros(e);
         }
         #endregion
 

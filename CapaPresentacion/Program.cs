@@ -1,4 +1,6 @@
 ﻿using CapaPresentacion.Forms;
+using CapaPresentacion.Forms.FormUsuario;
+using CapaPresentacion.MessageBoxs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +19,7 @@ namespace CapaPresentacion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmInicio());
+            Application.Run(new frmLogin());
         }
     }
 }

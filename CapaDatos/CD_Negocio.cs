@@ -85,31 +85,24 @@ namespace CapaDatos
             {
                 using (SqlConnection conexion = new SqlConnection(Conexion.cadena))
                 {
-                    conexion.Open();
+                    conexion.Open();                    
 
-                    StringBuilder query = new StringBuilder();
-                    query.AppendLine("UPDATE Negocio SET Nombre = @nombre,");
-                    query.AppendLine("CUIT = @cuit,");
-                    query.AppendLine("Direccion = @direccion,");
-                    query.AppendLine("Telefono = @telefono,");
-                    query.AppendLine("FechaInicioActividades = @fechainicioactividades");
-                    query.AppendLine("WHERE IdNegocio = 1");
-
-                    SqlCommand cmd = new SqlCommand(query.ToString(), conexion);
-                    cmd.Parameters.AddWithValue("@nombre", objeto.Nombre);
-                    cmd.Parameters.AddWithValue("@cuit", objeto.CUIT);
-                    cmd.Parameters.AddWithValue("@direccion", objeto.Calle + "-" + objeto.Localidad + "-" +
+                    SqlCommand cmd = new SqlCommand("PA_GuardarDatosNegocio", conexion);
+                    //Parametros de entrada
+                    cmd.Parameters.AddWithValue("UsuarioLogeado", Usuario.UsuarioLogeado.NombreUsuario);
+                    cmd.Parameters.AddWithValue("Nombre", objeto.Nombre);
+                    cmd.Parameters.AddWithValue("CUIT", objeto.CUIT);
+                    cmd.Parameters.AddWithValue("Direccion", objeto.Calle + "-" + objeto.Localidad + "-" +
                         objeto.Partido + "-" + objeto.Provincia);
-                    cmd.Parameters.AddWithValue("@telefono", objeto.Telefono);
-                    cmd.Parameters.AddWithValue("@fechainicioactividades", objeto.FechaInicioActividades);
+                    cmd.Parameters.AddWithValue("Telefono", objeto.Telefono);
+                    cmd.Parameters.AddWithValue("FechaInicioActividades", objeto.FechaInicioActividades);
+                    //Parametros de salida
+                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
 
-                    cmd.CommandType = CommandType.Text;
-
-                    if (cmd.ExecuteNonQuery() < 1)
-                    {
-                        mensaje = "No se pudo guardar los datos";
-                        respuesta = false;
-                    }
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    
+                    cmd.ExecuteNonQuery();
+                    mensaje = cmd.Parameters["Mensaje"].Value.ToString();
 
                 }
             }
@@ -121,6 +114,54 @@ namespace CapaDatos
 
             return respuesta;
         }
+
+        //public bool GuardarDatos(Negocio objeto, out string mensaje)
+        //{
+        //    mensaje = string.Empty;
+        //    bool respuesta = true;
+
+        //    try
+        //    {
+        //        using (SqlConnection conexion = new SqlConnection(Conexion.cadena))
+        //        {
+        //            conexion.Open();
+
+        //            StringBuilder query = new StringBuilder();
+        //            query.AppendLine("UPDATE Negocio SET Nombre = @nombre,");
+        //            query.AppendLine("CUIT = @cuit,");
+        //            query.AppendLine("Direccion = @direccion,");
+        //            query.AppendLine("Telefono = @telefono,");
+        //            query.AppendLine("FechaInicioActividades = @fechainicioactividades");
+        //            query.AppendLine("WHERE IdNegocio = 1");
+
+        //            SqlCommand cmd = new SqlCommand(query.ToString(), conexion);
+        //            cmd.Parameters.AddWithValue("@nombre", objeto.Nombre);
+        //            cmd.Parameters.AddWithValue("@cuit", objeto.CUIT);
+        //            cmd.Parameters.AddWithValue("@direccion", objeto.Calle + "-" + objeto.Localidad + "-" +
+        //                objeto.Partido + "-" + objeto.Provincia);
+        //            cmd.Parameters.AddWithValue("@telefono", objeto.Telefono);
+        //            cmd.Parameters.AddWithValue("@fechainicioactividades", objeto.FechaInicioActividades);
+
+        //            cmd.CommandType = CommandType.Text;
+
+        //            if (cmd.ExecuteNonQuery() < 1)
+        //            {
+        //                mensaje = "No se pudo guardar los datos";
+        //                respuesta = false;
+        //            }
+
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        mensaje = ex.Message;
+        //        respuesta = false;
+        //    }
+
+        //    return respuesta;
+        //}
+
+
 
         //Metodo que devuelve un Array de bytes
         public byte[] ObtenerLogo(out bool obtenido)
@@ -157,8 +198,6 @@ namespace CapaDatos
             return LogoBytes;
         }
 
-
-
         public bool ActualizarLogo(byte[] image, out string mensaje)
         {
             mensaje = string.Empty;
@@ -170,14 +209,11 @@ namespace CapaDatos
                 {
                     conexion.Open();
 
-                    StringBuilder query = new StringBuilder();
-                    query.AppendLine("UPDATE Negocio SET Logo = @imagen");
-                    query.AppendLine("WHERE IdNegocio = 1;");
+                    SqlCommand cmd = new SqlCommand("PA_ActualizarLogo", conexion);
 
-
-                    SqlCommand cmd = new SqlCommand(query.ToString(), conexion);
-                    cmd.Parameters.AddWithValue("@imagen", image);
-                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("UsuarioLogeado", Usuario.UsuarioLogeado.NombreUsuario);
+                    cmd.Parameters.AddWithValue("imagen", image);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     //Si el numero de filas afectadas es menor a 1 significa que no actualizo los datos del negocio
                     if (cmd.ExecuteNonQuery() < 1)

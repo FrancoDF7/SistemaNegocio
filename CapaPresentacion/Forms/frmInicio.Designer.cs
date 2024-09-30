@@ -38,8 +38,8 @@
             this.panelOpciones = new System.Windows.Forms.Panel();
             this.panelNegocioSubmenu = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.btnBitacora = new System.Windows.Forms.Button();
+            this.btnDetallesNegocio = new System.Windows.Forms.Button();
             this.btnNegocio = new FontAwesome.Sharp.IconButton();
             this.panelContabilidadSubmenu = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
@@ -48,8 +48,7 @@
             this.btnContabilidad = new FontAwesome.Sharp.IconButton();
             this.panelUsuariosSubmenu = new System.Windows.Forms.Panel();
             this.btnUsuariosPerfil = new System.Windows.Forms.Button();
-            this.btnUsuariosActualizar = new System.Windows.Forms.Button();
-            this.btnUsuariosCrear = new System.Windows.Forms.Button();
+            this.btnGestionUsuarios = new System.Windows.Forms.Button();
             this.btnUsuarios = new FontAwesome.Sharp.IconButton();
             this.panelComprasSubmenu = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
@@ -78,12 +77,15 @@
             this.btnProductos = new FontAwesome.Sharp.IconButton();
             this.panelIzquierdo = new System.Windows.Forms.Panel();
             this.panelUsuario = new System.Windows.Forms.Panel();
+            this.btnEditarMiUsuario = new FontAwesome.Sharp.IconButton();
             this.lblRol = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.iconoUsuario = new System.Windows.Forms.PictureBox();
             this.panelDivisor = new System.Windows.Forms.Panel();
             this.panelCentral = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelInferior = new System.Windows.Forms.Panel();
+            this.panelDerecho = new System.Windows.Forms.Panel();
+            this.txtIdImagen = new System.Windows.Forms.TextBox();
             this.panelBarraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.piclogonegocio)).BeginInit();
             this.panelOpciones.SuspendLayout();
@@ -174,6 +176,7 @@
             this.btnCerrar.Size = new System.Drawing.Size(38, 28);
             this.btnCerrar.TabIndex = 44;
             this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // lblHora
             // 
@@ -218,8 +221,8 @@
             // 
             this.panelNegocioSubmenu.BackColor = System.Drawing.Color.White;
             this.panelNegocioSubmenu.Controls.Add(this.button7);
-            this.panelNegocioSubmenu.Controls.Add(this.button8);
-            this.panelNegocioSubmenu.Controls.Add(this.button9);
+            this.panelNegocioSubmenu.Controls.Add(this.btnBitacora);
+            this.panelNegocioSubmenu.Controls.Add(this.btnDetallesNegocio);
             this.panelNegocioSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelNegocioSubmenu.ForeColor = System.Drawing.Color.Black;
             this.panelNegocioSubmenu.Location = new System.Drawing.Point(0, 1087);
@@ -245,39 +248,41 @@
             this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button7.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // btnBitacora
             // 
-            this.button8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.Black;
-            this.button8.Location = new System.Drawing.Point(0, 32);
-            this.button8.Margin = new System.Windows.Forms.Padding(2);
-            this.button8.Name = "button8";
-            this.button8.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
-            this.button8.Size = new System.Drawing.Size(188, 32);
-            this.button8.TabIndex = 1;
-            this.button8.Text = "Actualizar Usuario";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnBitacora.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBitacora.FlatAppearance.BorderSize = 0;
+            this.btnBitacora.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBitacora.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBitacora.ForeColor = System.Drawing.Color.Black;
+            this.btnBitacora.Location = new System.Drawing.Point(0, 32);
+            this.btnBitacora.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBitacora.Name = "btnBitacora";
+            this.btnBitacora.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this.btnBitacora.Size = new System.Drawing.Size(188, 32);
+            this.btnBitacora.TabIndex = 1;
+            this.btnBitacora.Text = "Bitacora";
+            this.btnBitacora.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBitacora.UseVisualStyleBackColor = true;
+            this.btnBitacora.Click += new System.EventHandler(this.btnBitacora_Click);
             // 
-            // button9
+            // btnDetallesNegocio
             // 
-            this.button9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.Color.Black;
-            this.button9.Location = new System.Drawing.Point(0, 0);
-            this.button9.Margin = new System.Windows.Forms.Padding(2);
-            this.button9.Name = "button9";
-            this.button9.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
-            this.button9.Size = new System.Drawing.Size(188, 32);
-            this.button9.TabIndex = 0;
-            this.button9.Text = "Plan de Cuentas";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.UseVisualStyleBackColor = true;
+            this.btnDetallesNegocio.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDetallesNegocio.FlatAppearance.BorderSize = 0;
+            this.btnDetallesNegocio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetallesNegocio.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetallesNegocio.ForeColor = System.Drawing.Color.Black;
+            this.btnDetallesNegocio.Location = new System.Drawing.Point(0, 0);
+            this.btnDetallesNegocio.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDetallesNegocio.Name = "btnDetallesNegocio";
+            this.btnDetallesNegocio.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this.btnDetallesNegocio.Size = new System.Drawing.Size(188, 32);
+            this.btnDetallesNegocio.TabIndex = 0;
+            this.btnDetallesNegocio.Text = "Detalles del Negocio";
+            this.btnDetallesNegocio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDetallesNegocio.UseVisualStyleBackColor = true;
+            this.btnDetallesNegocio.Click += new System.EventHandler(this.btnDetallesNegocio_Click);
             // 
             // btnNegocio
             // 
@@ -402,8 +407,7 @@
             // 
             this.panelUsuariosSubmenu.BackColor = System.Drawing.Color.White;
             this.panelUsuariosSubmenu.Controls.Add(this.btnUsuariosPerfil);
-            this.panelUsuariosSubmenu.Controls.Add(this.btnUsuariosActualizar);
-            this.panelUsuariosSubmenu.Controls.Add(this.btnUsuariosCrear);
+            this.panelUsuariosSubmenu.Controls.Add(this.btnGestionUsuarios);
             this.panelUsuariosSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelUsuariosSubmenu.ForeColor = System.Drawing.Color.Black;
             this.panelUsuariosSubmenu.Location = new System.Drawing.Point(0, 789);
@@ -419,7 +423,7 @@
             this.btnUsuariosPerfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUsuariosPerfil.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUsuariosPerfil.ForeColor = System.Drawing.Color.Black;
-            this.btnUsuariosPerfil.Location = new System.Drawing.Point(0, 64);
+            this.btnUsuariosPerfil.Location = new System.Drawing.Point(0, 32);
             this.btnUsuariosPerfil.Margin = new System.Windows.Forms.Padding(2);
             this.btnUsuariosPerfil.Name = "btnUsuariosPerfil";
             this.btnUsuariosPerfil.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
@@ -430,40 +434,23 @@
             this.btnUsuariosPerfil.UseVisualStyleBackColor = true;
             this.btnUsuariosPerfil.Click += new System.EventHandler(this.btnUsuariosPerfil_Click);
             // 
-            // btnUsuariosActualizar
+            // btnGestionUsuarios
             // 
-            this.btnUsuariosActualizar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnUsuariosActualizar.FlatAppearance.BorderSize = 0;
-            this.btnUsuariosActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsuariosActualizar.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUsuariosActualizar.ForeColor = System.Drawing.Color.Black;
-            this.btnUsuariosActualizar.Location = new System.Drawing.Point(0, 32);
-            this.btnUsuariosActualizar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnUsuariosActualizar.Name = "btnUsuariosActualizar";
-            this.btnUsuariosActualizar.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
-            this.btnUsuariosActualizar.Size = new System.Drawing.Size(188, 32);
-            this.btnUsuariosActualizar.TabIndex = 1;
-            this.btnUsuariosActualizar.Text = "Actualizar Usuario";
-            this.btnUsuariosActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsuariosActualizar.UseVisualStyleBackColor = true;
-            // 
-            // btnUsuariosCrear
-            // 
-            this.btnUsuariosCrear.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnUsuariosCrear.FlatAppearance.BorderSize = 0;
-            this.btnUsuariosCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsuariosCrear.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUsuariosCrear.ForeColor = System.Drawing.Color.Black;
-            this.btnUsuariosCrear.Location = new System.Drawing.Point(0, 0);
-            this.btnUsuariosCrear.Margin = new System.Windows.Forms.Padding(2);
-            this.btnUsuariosCrear.Name = "btnUsuariosCrear";
-            this.btnUsuariosCrear.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
-            this.btnUsuariosCrear.Size = new System.Drawing.Size(188, 32);
-            this.btnUsuariosCrear.TabIndex = 0;
-            this.btnUsuariosCrear.Text = "Crear Usuario";
-            this.btnUsuariosCrear.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsuariosCrear.UseVisualStyleBackColor = true;
-            this.btnUsuariosCrear.Click += new System.EventHandler(this.btnUsuariosCrear_Click);
+            this.btnGestionUsuarios.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGestionUsuarios.FlatAppearance.BorderSize = 0;
+            this.btnGestionUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGestionUsuarios.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGestionUsuarios.ForeColor = System.Drawing.Color.Black;
+            this.btnGestionUsuarios.Location = new System.Drawing.Point(0, 0);
+            this.btnGestionUsuarios.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGestionUsuarios.Name = "btnGestionUsuarios";
+            this.btnGestionUsuarios.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this.btnGestionUsuarios.Size = new System.Drawing.Size(188, 32);
+            this.btnGestionUsuarios.TabIndex = 0;
+            this.btnGestionUsuarios.Text = "Gestión de Usuarios";
+            this.btnGestionUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGestionUsuarios.UseVisualStyleBackColor = true;
+            this.btnGestionUsuarios.Click += new System.EventHandler(this.btnGestionUsuarios_Click);
             // 
             // btnUsuarios
             // 
@@ -973,6 +960,8 @@
             // panelUsuario
             // 
             this.panelUsuario.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelUsuario.Controls.Add(this.txtIdImagen);
+            this.panelUsuario.Controls.Add(this.btnEditarMiUsuario);
             this.panelUsuario.Controls.Add(this.lblRol);
             this.panelUsuario.Controls.Add(this.lblUsuario);
             this.panelUsuario.Controls.Add(this.iconoUsuario);
@@ -982,25 +971,43 @@
             this.panelUsuario.Size = new System.Drawing.Size(205, 157);
             this.panelUsuario.TabIndex = 23;
             // 
+            // btnEditarMiUsuario
+            // 
+            this.btnEditarMiUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.btnEditarMiUsuario.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnEditarMiUsuario.FlatAppearance.BorderSize = 2;
+            this.btnEditarMiUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarMiUsuario.IconChar = FontAwesome.Sharp.IconChar.UserEdit;
+            this.btnEditarMiUsuario.IconColor = System.Drawing.Color.Black;
+            this.btnEditarMiUsuario.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnEditarMiUsuario.IconSize = 35;
+            this.btnEditarMiUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditarMiUsuario.Location = new System.Drawing.Point(156, 73);
+            this.btnEditarMiUsuario.Name = "btnEditarMiUsuario";
+            this.btnEditarMiUsuario.Size = new System.Drawing.Size(44, 31);
+            this.btnEditarMiUsuario.TabIndex = 2;
+            this.btnEditarMiUsuario.UseVisualStyleBackColor = false;
+            this.btnEditarMiUsuario.Click += new System.EventHandler(this.btnEditarMiUsuario_Click);
+            // 
             // lblRol
             // 
-            this.lblRol.AutoSize = true;
-            this.lblRol.Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRol.Location = new System.Drawing.Point(89, 129);
+            this.lblRol.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRol.Location = new System.Drawing.Point(0, 121);
             this.lblRol.Name = "lblRol";
-            this.lblRol.Size = new System.Drawing.Size(28, 15);
+            this.lblRol.Size = new System.Drawing.Size(207, 15);
             this.lblRol.TabIndex = 24;
             this.lblRol.Text = "Rol";
+            this.lblRol.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblUsuario
             // 
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(77, 108);
+            this.lblUsuario.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.Location = new System.Drawing.Point(0, 106);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(58, 15);
+            this.lblUsuario.Size = new System.Drawing.Size(207, 15);
             this.lblUsuario.TabIndex = 23;
             this.lblUsuario.Text = "Usuario";
+            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // iconoUsuario
             // 
@@ -1018,26 +1025,51 @@
             this.panelDivisor.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelDivisor.Location = new System.Drawing.Point(205, 28);
             this.panelDivisor.Name = "panelDivisor";
-            this.panelDivisor.Size = new System.Drawing.Size(2, 603);
+            this.panelDivisor.Size = new System.Drawing.Size(3, 603);
             this.panelDivisor.TabIndex = 23;
             // 
             // panelCentral
             // 
-            this.panelCentral.Controls.Add(this.panel1);
+            this.panelCentral.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelCentral.Controls.Add(this.panelInferior);
+            this.panelCentral.Controls.Add(this.panelDerecho);
             this.panelCentral.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelCentral.Location = new System.Drawing.Point(207, 28);
+            this.panelCentral.Location = new System.Drawing.Point(208, 28);
             this.panelCentral.Name = "panelCentral";
-            this.panelCentral.Size = new System.Drawing.Size(899, 603);
+            this.panelCentral.Size = new System.Drawing.Size(898, 603);
             this.panelCentral.TabIndex = 24;
             // 
-            // panel1
+            // panelInferior
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(897, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(2, 603);
-            this.panel1.TabIndex = 0;
+            this.panelInferior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.panelInferior.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelInferior.Location = new System.Drawing.Point(0, 600);
+            this.panelInferior.Name = "panelInferior";
+            this.panelInferior.Size = new System.Drawing.Size(895, 3);
+            this.panelInferior.TabIndex = 1;
+            // 
+            // panelDerecho
+            // 
+            this.panelDerecho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.panelDerecho.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelDerecho.Location = new System.Drawing.Point(895, 0);
+            this.panelDerecho.Name = "panelDerecho";
+            this.panelDerecho.Size = new System.Drawing.Size(3, 603);
+            this.panelDerecho.TabIndex = 0;
+            // 
+            // txtIdImagen
+            // 
+            this.txtIdImagen.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdImagen.Location = new System.Drawing.Point(169, 6);
+            this.txtIdImagen.MaxLength = 32;
+            this.txtIdImagen.Name = "txtIdImagen";
+            this.txtIdImagen.ShortcutsEnabled = false;
+            this.txtIdImagen.Size = new System.Drawing.Size(30, 22);
+            this.txtIdImagen.TabIndex = 203;
+            this.txtIdImagen.TabStop = false;
+            this.txtIdImagen.Text = "1";
+            this.txtIdImagen.Visible = false;
+            this.txtIdImagen.TextChanged += new System.EventHandler(this.txtIdImagen_TextChanged);
             // 
             // frmInicio
             // 
@@ -1089,8 +1121,7 @@
         private FontAwesome.Sharp.IconButton btnContabilidad;
         private System.Windows.Forms.Panel panelUsuariosSubmenu;
         private System.Windows.Forms.Button btnUsuariosPerfil;
-        private System.Windows.Forms.Button btnUsuariosActualizar;
-        private System.Windows.Forms.Button btnUsuariosCrear;
+        private System.Windows.Forms.Button btnGestionUsuarios;
         private System.Windows.Forms.Label lblHora;
         private FontAwesome.Sharp.IconButton btnUsuarios;
         private System.Windows.Forms.Panel panelComprasSubmenu;
@@ -1127,11 +1158,14 @@
         private System.Windows.Forms.Panel panelCentral;
         private System.Windows.Forms.Panel panelNegocioSubmenu;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button btnBitacora;
+        private System.Windows.Forms.Button btnDetallesNegocio;
         private FontAwesome.Sharp.IconButton btnNegocio;
         private System.Windows.Forms.PictureBox piclogonegocio;
         private System.Windows.Forms.Label lblnombrenegocio;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelDerecho;
+        private System.Windows.Forms.Panel panelInferior;
+        private FontAwesome.Sharp.IconButton btnEditarMiUsuario;
+        private System.Windows.Forms.TextBox txtIdImagen;
     }
 }

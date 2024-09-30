@@ -62,3 +62,7 @@ _TeamCity*
 
 #Paquetes NuGet
 packages/
+
+#Otros
+Anotaciones.txt
+

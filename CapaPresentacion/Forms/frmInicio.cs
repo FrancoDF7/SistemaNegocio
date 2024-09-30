@@ -1,6 +1,9 @@
-﻿using CapaPresentacion.Forms.FormNegocio;
+﻿using CapaEntidad;
+using CapaNegocio;
+using CapaPresentacion.Forms.FormNegocio;
 using CapaPresentacion.Forms.FormUsuario;
 using CapaSoporte;
+using CapaSoporte.Utilidades;
 using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
@@ -12,22 +15,41 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace CapaPresentacion.Forms
 {
     public partial class frmInicio : Form
     {
-        //private static Usuario usuarioActual;
         private static IconButton BotonSeccion = null;
+        private static Button BotonPanelSubmenu = null;
         private static Form FormularioActivo = null;
-        MoverForm moverForm = new MoverForm();
 
-        public frmInicio()
+        public frmInicio(Usuario objusuario = null)
         {
+            //Genera un usuario predefinido para no tener acceder a la base de datos para probar el programa
+            if (objusuario == null)
+            {
+                Usuario.UsuarioLogeado = new Usuario() { NombreUsuario = "ADMIN PREDEFINIDO", IdUsuario = 1 };
+            }
+            else
+            {
+                //Guarda la informacion del usuario que se logeo en la variable de tipo usuario
+                Usuario.UsuarioLogeado = objusuario;                
+            }
+
             InitializeComponent();
         }
 
         private void frmInicio_Load(object sender, EventArgs e)
         {
+            CN_Usuario cn_Usuario = new CN_Usuario();
+            cn_Usuario.RegistraLogin(Usuario.UsuarioLogeado.NombreUsuario); //Registra login en la bitacora
+
+            #region Muestra datos del usuario logeado
+            txtIdImagen.Text = Usuario.UsuarioLogeado.IdImagen.ToString();
+            lblUsuario.Text = Usuario.UsuarioLogeado.NombreUsuario;
+            lblRol.Text = Usuario.UsuarioLogeado.oRol.Descripcion;
+            #endregion
             InicializarSubmenus();
         }
 
@@ -35,15 +57,15 @@ namespace CapaPresentacion.Forms
         #region Eventos mover formulario
         private void panelBarraTitulo_MouseDown(object sender, MouseEventArgs e)
         {            
-            moverForm.MoverFormulario(this.Handle);
+            MoverForm.MoverFormulario(this.Handle);
         }
         private void lblnombrenegocio_MouseDown(object sender, MouseEventArgs e)
         {
-            moverForm.MoverFormulario(this.Handle);
+            MoverForm.MoverFormulario(this.Handle);
         }
         private void piclogonegocio_MouseDown(object sender, MouseEventArgs e)
         {
-            moverForm.MoverFormulario(this.Handle);
+            MoverForm.MoverFormulario(this.Handle);
         }
         #endregion
 
@@ -89,23 +111,36 @@ namespace CapaPresentacion.Forms
         {
            MostrarSubmenu(panelUsuariosSubmenu);
         }
-        private void btnUsuariosCrear_Click(object sender, EventArgs e)
+        private void btnGestionUsuarios_Click(object sender, EventArgs e)
         {
-            frmCrearUsuario frmCrearUsuario = new frmCrearUsuario();
-            frmCrearUsuario.ShowDialog();
+            AbrirFormulario(null, btnGestionUsuarios, new frmCrearUsuario());
         }
         private void btnUsuariosPerfil_Click(object sender, EventArgs e)
         {
-            frmEditarPerfil frmEditarPerfil = new frmEditarPerfil();
-            frmEditarPerfil.ShowDialog();
+            
         }
+
+        //Cambia el icono del usuario en el frmInicio si que se cambio al editar el usuario
+        private void btnEditarMiUsuario_Click(object sender, EventArgs e)
+        {            
+            using (var frm = new frmEditarPerfil())
+            {
+                var result = frm.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    txtIdImagen.Text = frm._Usuario.IdImagen.ToString();
+                }
+            }
+
+        }
+
         #endregion
 
         #region Eventos botones Contabilidad
         private void btnContabilidad_Click(object sender, EventArgs e)
         {
-            MostrarSubmenu(panelContabilidadSubmenu);
-            AbrirFormulario(btnContabilidad, new frmEditarPerfil());
+            
         }
         #endregion
 
@@ -113,8 +148,18 @@ namespace CapaPresentacion.Forms
         private void btnNegocio_Click(object sender, EventArgs e)
         {
             MostrarSubmenu(panelNegocioSubmenu);
-            AbrirFormulario(btnNegocio, new frmNegocio());
         }
+
+        private void btnDetallesNegocio_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(null,btnDetallesNegocio, new frmNegocio());
+        }
+
+        private void btnBitacora_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(null, btnBitacora, new frmBitacora());
+        }
+
         #endregion
 
 
@@ -188,16 +233,32 @@ namespace CapaPresentacion.Forms
 
         #endregion
 
+        #region Metodo para mostrar formularios dentro del frmInicio
 
-        private void AbrirFormulario(IconButton boton, Form formulario)
+        //Cuando se llama al metodo se le pasa null al parametro que no corresponda
+        //con el tipo de boton se le hace click.
+        private void AbrirFormulario(IconButton iconboton, Button boton  ,Form formulario)
         {
-            if (BotonSeccion != null)
+            //Si ya se seleccion un boton anteriormente vuelve blanco todos los controles
+            if (BotonSeccion != null || boton != null)
             {
-                BotonSeccion.BackColor = Color.White;
+                EstablecerBackColorBlanco(panelOpciones);
+            }            
+
+            //Verifica el que boton presionado sea de tipo iconbutton
+            if (iconboton != null)
+            {
+                BotonSeccion = iconboton;
+                iconboton.BackColor = Color.FromArgb(0, 192, 192);
             }
 
-            boton.BackColor = Color.FromArgb(0, 192, 192);
-            BotonSeccion = boton;
+            //Verifica el que boton presionado sea de tipo button
+            if (boton != null)
+            {
+                BotonPanelSubmenu = boton;
+                boton.BackColor = Color.FromArgb(0, 192, 192);
+            }
+            
 
             if (FormularioActivo != null)
             {
@@ -210,13 +271,45 @@ namespace CapaPresentacion.Forms
             formulario.FormBorderStyle = FormBorderStyle.None;
             formulario.Dock = DockStyle.Fill;
             formulario.BackColor = Color.White;
+           
 
             panelCentral.Controls.Add(formulario);
             formulario.Show();
 
+            //Centra el horizontalmente y lo coloca en la parte superior
+            formulario.Left = (panelCentral.Width - formulario.Width) / 2;
+            formulario.Top = 0;
         }
+        #endregion
+
+        //Vuelve de color blanco todo los controles
+        //que esten dentro del control que se pase por parametros
+        private void EstablecerBackColorBlanco(Control control)
+        {
+            control.BackColor = Color.White;
+
+            // Recorrer todos los controles hijos
+            foreach (Control childControl in control.Controls)
+            {
+                EstablecerBackColorBlanco(childControl);
+            }
+        }
+
+
+
 
         #endregion
 
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        //Actualiza el icono de usuario segun el su IdImagen.
+        //Nota: Se dispara el evento cuando carga el frmInicio y cuando se cierra el frmEditarPerfil
+        private void txtIdImagen_TextChanged(object sender, EventArgs e)
+        {
+            iconoUsuario.ImageLocation = RutaImagenes.DevuelveRutaDeImagenes(txtIdImagen.Text);
+        }
     }
 }
