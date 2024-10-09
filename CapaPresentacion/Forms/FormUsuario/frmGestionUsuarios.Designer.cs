@@ -1,6 +1,6 @@
 ﻿namespace CapaPresentacion.Forms.FormUsuario
 {
-    partial class frmCrearUsuario
+    partial class frmGestionUsuarios
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCrearUsuario));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionUsuarios));
             this.label8 = new System.Windows.Forms.Label();
             this.BarraTitulo = new System.Windows.Forms.Panel();
             this.iconoSeccion = new FontAwesome.Sharp.IconPictureBox();
@@ -50,15 +50,15 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblNumeroDocumento = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelInferior = new System.Windows.Forms.Panel();
             this.btnexportar = new System.Windows.Forms.Button();
             this.btnlimpiarbuscador = new FontAwesome.Sharp.IconButton();
             this.btnbuscar = new FontAwesome.Sharp.IconButton();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.cboBusqueda = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.dgvdata = new System.Windows.Forms.DataGridView();
+            this.lblListaUsuarios = new System.Windows.Forms.Label();
+            this.dgvData = new System.Windows.Forms.DataGridView();
             this.btnseleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,36 +73,36 @@
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdImagen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label13 = new System.Windows.Forms.Label();
-            this.txtIndice = new System.Windows.Forms.TextBox();
-            this.btnCambiarImagen = new FontAwesome.Sharp.IconButton();
-            this.iconoUsuario = new System.Windows.Forms.PictureBox();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtIdImagen = new System.Windows.Forms.TextBox();
-            this.btnLimpiar = new FontAwesome.Sharp.IconButton();
-            this.btnGuardarCambios = new FontAwesome.Sharp.IconButton();
             this.txtClave = new System.Windows.Forms.TextBox();
             this.lblClave = new System.Windows.Forms.Label();
             this.lblConfirmarClave = new System.Windows.Forms.Label();
-            this.btnVerOcultarClave1 = new FontAwesome.Sharp.IconButton();
             this.txtConfirmarClave = new System.Windows.Forms.TextBox();
             this.btnVerOcultarClave2 = new FontAwesome.Sharp.IconButton();
+            this.btnVerOcultarClave1 = new FontAwesome.Sharp.IconButton();
+            this.btnGuardarCambios = new FontAwesome.Sharp.IconButton();
+            this.btnLimpiar = new FontAwesome.Sharp.IconButton();
+            this.btnCambiarImagen = new FontAwesome.Sharp.IconButton();
+            this.iconoUsuario = new System.Windows.Forms.PictureBox();
+            this.txtIndice = new System.Windows.Forms.TextBox();
             this.BarraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconoSeccion)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).BeginInit();
+            this.panelInferior.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconoUsuario)).BeginInit();
             this.SuspendLayout();
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Roboto Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label8.Location = new System.Drawing.Point(151, 40);
+            this.label8.Location = new System.Drawing.Point(150, 36);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(132, 14);
+            this.label8.Size = new System.Drawing.Size(165, 19);
             this.label8.TabIndex = 143;
-            this.label8.Text = "DETALLES USUARIO";
+            this.label8.Text = "DATOS DEL USUARIO";
             // 
             // BarraTitulo
             // 
@@ -122,11 +122,11 @@
             this.iconoSeccion.IconChar = FontAwesome.Sharp.IconChar.UsersGear;
             this.iconoSeccion.IconColor = System.Drawing.Color.White;
             this.iconoSeccion.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconoSeccion.IconSize = 24;
-            this.iconoSeccion.Location = new System.Drawing.Point(333, 2);
+            this.iconoSeccion.IconSize = 36;
+            this.iconoSeccion.Location = new System.Drawing.Point(325, -1);
             this.iconoSeccion.Margin = new System.Windows.Forms.Padding(2);
             this.iconoSeccion.Name = "iconoSeccion";
-            this.iconoSeccion.Size = new System.Drawing.Size(28, 24);
+            this.iconoSeccion.Size = new System.Drawing.Size(36, 37);
             this.iconoSeccion.TabIndex = 91;
             this.iconoSeccion.TabStop = false;
             // 
@@ -136,7 +136,7 @@
             this.lblSeccionUsuarios.ForeColor = System.Drawing.Color.White;
             this.lblSeccionUsuarios.Location = new System.Drawing.Point(0, 3);
             this.lblSeccionUsuarios.Name = "lblSeccionUsuarios";
-            this.lblSeccionUsuarios.Size = new System.Drawing.Size(899, 21);
+            this.lblSeccionUsuarios.Size = new System.Drawing.Size(899, 25);
             this.lblSeccionUsuarios.TabIndex = 92;
             this.lblSeccionUsuarios.Text = "Gestión de Usuarios";
             this.lblSeccionUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -288,21 +288,22 @@
             this.lblApellido.TabIndex = 135;
             this.lblApellido.Text = "Apellido";
             // 
-            // panel1
+            // panelInferior
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.panel1.Controls.Add(this.btnexportar);
-            this.panel1.Controls.Add(this.btnlimpiarbuscador);
-            this.panel1.Controls.Add(this.btnbuscar);
-            this.panel1.Controls.Add(this.txtBusqueda);
-            this.panel1.Controls.Add(this.cboBusqueda);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.dgvdata);
-            this.panel1.Location = new System.Drawing.Point(0, 220);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(897, 403);
-            this.panel1.TabIndex = 154;
+            this.panelInferior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panelInferior.Controls.Add(this.btnexportar);
+            this.panelInferior.Controls.Add(this.btnlimpiarbuscador);
+            this.panelInferior.Controls.Add(this.btnbuscar);
+            this.panelInferior.Controls.Add(this.txtBusqueda);
+            this.panelInferior.Controls.Add(this.cboBusqueda);
+            this.panelInferior.Controls.Add(this.label11);
+            this.panelInferior.Controls.Add(this.lblListaUsuarios);
+            this.panelInferior.Controls.Add(this.dgvData);
+            this.panelInferior.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelInferior.Location = new System.Drawing.Point(0, 220);
+            this.panelInferior.Name = "panelInferior";
+            this.panelInferior.Size = new System.Drawing.Size(899, 383);
+            this.panelInferior.TabIndex = 154;
             // 
             // btnexportar
             // 
@@ -395,37 +396,37 @@
             this.label11.TabIndex = 58;
             this.label11.Text = "Buscar por:";
             // 
-            // label10
+            // lblListaUsuarios
             // 
-            this.label10.BackColor = System.Drawing.Color.White;
-            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label10.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(6, 6);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Padding = new System.Windows.Forms.Padding(2, 6, 0, 0);
-            this.label10.Size = new System.Drawing.Size(882, 86);
-            this.label10.TabIndex = 22;
-            this.label10.Text = "Lista de Usuarios:";
+            this.lblListaUsuarios.BackColor = System.Drawing.Color.White;
+            this.lblListaUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblListaUsuarios.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblListaUsuarios.Location = new System.Drawing.Point(6, 6);
+            this.lblListaUsuarios.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblListaUsuarios.Name = "lblListaUsuarios";
+            this.lblListaUsuarios.Padding = new System.Windows.Forms.Padding(2, 6, 0, 0);
+            this.lblListaUsuarios.Size = new System.Drawing.Size(883, 86);
+            this.lblListaUsuarios.TabIndex = 22;
+            this.lblListaUsuarios.Text = "Lista de Usuarios:";
             // 
-            // dgvdata
+            // dgvData
             // 
-            this.dgvdata.AllowUserToAddRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvdata.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvdata.BackgroundColor = System.Drawing.Color.White;
-            this.dgvdata.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvdata.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvData.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvData.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvData.BackgroundColor = System.Drawing.Color.White;
+            this.dgvData.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnseleccionar,
             this.Id,
             this.Documento,
@@ -439,23 +440,23 @@
             this.EstadoValor,
             this.Estado,
             this.IdImagen});
-            this.dgvdata.Location = new System.Drawing.Point(6, 98);
-            this.dgvdata.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvdata.MultiSelect = false;
-            this.dgvdata.Name = "dgvdata";
-            this.dgvdata.ReadOnly = true;
-            this.dgvdata.RowHeadersVisible = false;
-            this.dgvdata.RowHeadersWidth = 51;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvdata.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvdata.RowTemplate.Height = 28;
-            this.dgvdata.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvdata.Size = new System.Drawing.Size(883, 278);
-            this.dgvdata.TabIndex = 21;
-            this.dgvdata.TabStop = false;
-            this.dgvdata.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvdata_CellContentClick);
-            this.dgvdata.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvdata_CellPainting);
+            this.dgvData.Location = new System.Drawing.Point(6, 98);
+            this.dgvData.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvData.MultiSelect = false;
+            this.dgvData.Name = "dgvData";
+            this.dgvData.ReadOnly = true;
+            this.dgvData.RowHeadersVisible = false;
+            this.dgvData.RowHeadersWidth = 51;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvData.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvData.RowTemplate.Height = 28;
+            this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvData.Size = new System.Drawing.Size(883, 278);
+            this.dgvData.TabIndex = 21;
+            this.dgvData.TabStop = false;
+            this.dgvData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvdata_CellContentClick);
+            this.dgvData.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvdata_CellPainting);
             // 
             // btnseleccionar
             // 
@@ -579,50 +580,6 @@
             this.label13.Size = new System.Drawing.Size(890, 187);
             this.label13.TabIndex = 155;
             this.label13.Visible = false;
-            this.label13.Click += new System.EventHandler(this.label13_Click);
-            // 
-            // txtIndice
-            // 
-            this.txtIndice.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIndice.Location = new System.Drawing.Point(772, 37);
-            this.txtIndice.MaxLength = 32;
-            this.txtIndice.Name = "txtIndice";
-            this.txtIndice.ShortcutsEnabled = false;
-            this.txtIndice.Size = new System.Drawing.Size(30, 22);
-            this.txtIndice.TabIndex = 156;
-            this.txtIndice.TabStop = false;
-            this.txtIndice.Text = "0";
-            this.txtIndice.Visible = false;
-            // 
-            // btnCambiarImagen
-            // 
-            this.btnCambiarImagen.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCambiarImagen.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
-            this.btnCambiarImagen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCambiarImagen.Font = new System.Drawing.Font("Roboto", 9.75F);
-            this.btnCambiarImagen.ForeColor = System.Drawing.Color.Black;
-            this.btnCambiarImagen.IconChar = FontAwesome.Sharp.IconChar.IdCard;
-            this.btnCambiarImagen.IconColor = System.Drawing.Color.Black;
-            this.btnCambiarImagen.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnCambiarImagen.IconSize = 30;
-            this.btnCambiarImagen.Location = new System.Drawing.Point(18, 159);
-            this.btnCambiarImagen.Name = "btnCambiarImagen";
-            this.btnCambiarImagen.Size = new System.Drawing.Size(115, 44);
-            this.btnCambiarImagen.TabIndex = 8;
-            this.btnCambiarImagen.Text = "Cambiar imagen";
-            this.btnCambiarImagen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCambiarImagen.UseVisualStyleBackColor = false;
-            this.btnCambiarImagen.Click += new System.EventHandler(this.btnCambiarImagen_Click);
-            // 
-            // iconoUsuario
-            // 
-            this.iconoUsuario.Image = ((System.Drawing.Image)(resources.GetObject("iconoUsuario.Image")));
-            this.iconoUsuario.Location = new System.Drawing.Point(18, 40);
-            this.iconoUsuario.Name = "iconoUsuario";
-            this.iconoUsuario.Size = new System.Drawing.Size(113, 113);
-            this.iconoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.iconoUsuario.TabIndex = 170;
-            this.iconoUsuario.TabStop = false;
             // 
             // txtId
             // 
@@ -650,52 +607,6 @@
             this.txtIdImagen.Text = "1";
             this.txtIdImagen.Visible = false;
             this.txtIdImagen.TextChanged += new System.EventHandler(this.txtIdImagen_TextChanged);
-            // 
-            // btnLimpiar
-            // 
-            this.btnLimpiar.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLimpiar.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
-            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimpiar.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.ForeColor = System.Drawing.Color.Black;
-            this.btnLimpiar.IconChar = FontAwesome.Sharp.IconChar.Broom;
-            this.btnLimpiar.IconColor = System.Drawing.Color.Black;
-            this.btnLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnLimpiar.IconSize = 20;
-            this.btnLimpiar.Location = new System.Drawing.Point(733, 164);
-            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(96, 35);
-            this.btnLimpiar.TabIndex = 12;
-            this.btnLimpiar.Text = "Limpiar";
-            this.btnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLimpiar.UseVisualStyleBackColor = false;
-            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
-            // 
-            // btnGuardarCambios
-            // 
-            this.btnGuardarCambios.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnGuardarCambios.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGuardarCambios.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
-            this.btnGuardarCambios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardarCambios.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardarCambios.ForeColor = System.Drawing.Color.Black;
-            this.btnGuardarCambios.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
-            this.btnGuardarCambios.IconColor = System.Drawing.Color.Black;
-            this.btnGuardarCambios.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnGuardarCambios.IconSize = 20;
-            this.btnGuardarCambios.Location = new System.Drawing.Point(562, 164);
-            this.btnGuardarCambios.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGuardarCambios.Name = "btnGuardarCambios";
-            this.btnGuardarCambios.Size = new System.Drawing.Size(144, 35);
-            this.btnGuardarCambios.TabIndex = 11;
-            this.btnGuardarCambios.Text = "Guardar Cambios";
-            this.btnGuardarCambios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardarCambios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardarCambios.UseVisualStyleBackColor = false;
-            this.btnGuardarCambios.Click += new System.EventHandler(this.btnGuardarCambios_Click);
             // 
             // txtClave
             // 
@@ -727,28 +638,6 @@
             this.lblConfirmarClave.Size = new System.Drawing.Size(126, 14);
             this.lblConfirmarClave.TabIndex = 179;
             this.lblConfirmarClave.Text = "Confirmar contraseña";
-            // 
-            // btnVerOcultarClave1
-            // 
-            this.btnVerOcultarClave1.BackColor = System.Drawing.Color.White;
-            this.btnVerOcultarClave1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVerOcultarClave1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.btnVerOcultarClave1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVerOcultarClave1.ForeColor = System.Drawing.Color.White;
-            this.btnVerOcultarClave1.IconChar = FontAwesome.Sharp.IconChar.Eye;
-            this.btnVerOcultarClave1.IconColor = System.Drawing.Color.Black;
-            this.btnVerOcultarClave1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnVerOcultarClave1.IconSize = 30;
-            this.btnVerOcultarClave1.Location = new System.Drawing.Point(300, 172);
-            this.btnVerOcultarClave1.Margin = new System.Windows.Forms.Padding(0, 2, 2, 2);
-            this.btnVerOcultarClave1.Name = "btnVerOcultarClave1";
-            this.btnVerOcultarClave1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.btnVerOcultarClave1.Size = new System.Drawing.Size(32, 22);
-            this.btnVerOcultarClave1.TabIndex = 180;
-            this.btnVerOcultarClave1.TabStop = false;
-            this.btnVerOcultarClave1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnVerOcultarClave1.UseVisualStyleBackColor = false;
-            this.btnVerOcultarClave1.Click += new System.EventHandler(this.btnVerOcultarClave1_Click);
             // 
             // txtConfirmarClave
             // 
@@ -783,7 +672,118 @@
             this.btnVerOcultarClave2.UseVisualStyleBackColor = false;
             this.btnVerOcultarClave2.Click += new System.EventHandler(this.btnVerOcultarClave2_Click);
             // 
-            // frmCrearUsuario
+            // btnVerOcultarClave1
+            // 
+            this.btnVerOcultarClave1.BackColor = System.Drawing.Color.White;
+            this.btnVerOcultarClave1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVerOcultarClave1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.btnVerOcultarClave1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerOcultarClave1.ForeColor = System.Drawing.Color.White;
+            this.btnVerOcultarClave1.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            this.btnVerOcultarClave1.IconColor = System.Drawing.Color.Black;
+            this.btnVerOcultarClave1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnVerOcultarClave1.IconSize = 30;
+            this.btnVerOcultarClave1.Location = new System.Drawing.Point(300, 172);
+            this.btnVerOcultarClave1.Margin = new System.Windows.Forms.Padding(0, 2, 2, 2);
+            this.btnVerOcultarClave1.Name = "btnVerOcultarClave1";
+            this.btnVerOcultarClave1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.btnVerOcultarClave1.Size = new System.Drawing.Size(32, 22);
+            this.btnVerOcultarClave1.TabIndex = 180;
+            this.btnVerOcultarClave1.TabStop = false;
+            this.btnVerOcultarClave1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnVerOcultarClave1.UseVisualStyleBackColor = false;
+            this.btnVerOcultarClave1.Click += new System.EventHandler(this.btnVerOcultarClave1_Click);
+            // 
+            // btnGuardarCambios
+            // 
+            this.btnGuardarCambios.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnGuardarCambios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardarCambios.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
+            this.btnGuardarCambios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarCambios.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarCambios.ForeColor = System.Drawing.Color.Black;
+            this.btnGuardarCambios.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
+            this.btnGuardarCambios.IconColor = System.Drawing.Color.Black;
+            this.btnGuardarCambios.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnGuardarCambios.IconSize = 20;
+            this.btnGuardarCambios.Location = new System.Drawing.Point(562, 164);
+            this.btnGuardarCambios.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardarCambios.Name = "btnGuardarCambios";
+            this.btnGuardarCambios.Size = new System.Drawing.Size(144, 35);
+            this.btnGuardarCambios.TabIndex = 11;
+            this.btnGuardarCambios.Text = "Guardar Cambios";
+            this.btnGuardarCambios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardarCambios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardarCambios.UseVisualStyleBackColor = false;
+            this.btnGuardarCambios.Click += new System.EventHandler(this.btnGuardarCambios_Click);
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpiar.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.ForeColor = System.Drawing.Color.Black;
+            this.btnLimpiar.IconChar = FontAwesome.Sharp.IconChar.Broom;
+            this.btnLimpiar.IconColor = System.Drawing.Color.Black;
+            this.btnLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnLimpiar.IconSize = 20;
+            this.btnLimpiar.Location = new System.Drawing.Point(733, 164);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(96, 35);
+            this.btnLimpiar.TabIndex = 12;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // btnCambiarImagen
+            // 
+            this.btnCambiarImagen.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCambiarImagen.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
+            this.btnCambiarImagen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCambiarImagen.Font = new System.Drawing.Font("Roboto", 9.75F);
+            this.btnCambiarImagen.ForeColor = System.Drawing.Color.Black;
+            this.btnCambiarImagen.IconChar = FontAwesome.Sharp.IconChar.IdCard;
+            this.btnCambiarImagen.IconColor = System.Drawing.Color.Black;
+            this.btnCambiarImagen.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnCambiarImagen.IconSize = 30;
+            this.btnCambiarImagen.Location = new System.Drawing.Point(18, 159);
+            this.btnCambiarImagen.Name = "btnCambiarImagen";
+            this.btnCambiarImagen.Size = new System.Drawing.Size(115, 44);
+            this.btnCambiarImagen.TabIndex = 8;
+            this.btnCambiarImagen.Text = "Cambiar imagen";
+            this.btnCambiarImagen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCambiarImagen.UseVisualStyleBackColor = false;
+            this.btnCambiarImagen.Click += new System.EventHandler(this.btnCambiarImagen_Click);
+            // 
+            // iconoUsuario
+            // 
+            this.iconoUsuario.Image = ((System.Drawing.Image)(resources.GetObject("iconoUsuario.Image")));
+            this.iconoUsuario.Location = new System.Drawing.Point(18, 40);
+            this.iconoUsuario.Name = "iconoUsuario";
+            this.iconoUsuario.Size = new System.Drawing.Size(113, 113);
+            this.iconoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.iconoUsuario.TabIndex = 170;
+            this.iconoUsuario.TabStop = false;
+            // 
+            // txtIndice
+            // 
+            this.txtIndice.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIndice.Location = new System.Drawing.Point(772, 37);
+            this.txtIndice.MaxLength = 32;
+            this.txtIndice.Name = "txtIndice";
+            this.txtIndice.ShortcutsEnabled = false;
+            this.txtIndice.Size = new System.Drawing.Size(30, 22);
+            this.txtIndice.TabIndex = 156;
+            this.txtIndice.TabStop = false;
+            this.txtIndice.Text = "-1";
+            this.txtIndice.Visible = false;
+            // 
+            // frmGestionUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -813,7 +813,7 @@
             this.Controls.Add(this.btnCambiarImagen);
             this.Controls.Add(this.iconoUsuario);
             this.Controls.Add(this.txtIndice);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelInferior);
             this.Controls.Add(this.BarraTitulo);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.cboEstado);
@@ -821,14 +821,14 @@
             this.Controls.Add(this.lblTipoUsuario);
             this.Controls.Add(this.label13);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmCrearUsuario";
+            this.Name = "frmGestionUsuarios";
             this.Text = " ";
-            this.Load += new System.EventHandler(this.frmCrearUsuario_Load);
+            this.Load += new System.EventHandler(this.frmGestionUsuarios_Load);
             this.BarraTitulo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iconoSeccion)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).EndInit();
+            this.panelInferior.ResumeLayout(false);
+            this.panelInferior.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconoUsuario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -854,11 +854,9 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblNumeroDocumento;
         private System.Windows.Forms.Label lblApellido;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelInferior;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DataGridView dgvdata;
-        private System.Windows.Forms.TextBox txtIndice;
+        private System.Windows.Forms.Label lblListaUsuarios;
         private System.Windows.Forms.PictureBox iconoUsuario;
         private FontAwesome.Sharp.IconButton btnCambiarImagen;
         private System.Windows.Forms.Button btnexportar;
@@ -876,6 +874,8 @@
         private System.Windows.Forms.Label lblConfirmarClave;
         private FontAwesome.Sharp.IconButton btnVerOcultarClave1;
         private System.Windows.Forms.TextBox txtConfirmarClave;
+        private FontAwesome.Sharp.IconButton btnVerOcultarClave2;
+        private System.Windows.Forms.DataGridView dgvData;
         private System.Windows.Forms.DataGridViewButtonColumn btnseleccionar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Documento;
@@ -889,6 +889,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoValor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdImagen;
-        private FontAwesome.Sharp.IconButton btnVerOcultarClave2;
+        private System.Windows.Forms.TextBox txtIndice;
     }
 }

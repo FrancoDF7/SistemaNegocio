@@ -42,9 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="CN_Bitacora.cs" />
+    <Compile Include="CN_Cliente.cs" />
+    <Compile Include="CN_CondicionFiscal.cs" />
     <Compile Include="CN_Negocio.cs" />
+    <Compile Include="CN_Permiso.cs" />
     <Compile Include="CN_Rol.cs" />
     <Compile Include="CN_Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -57,6 +59,10 @@
     <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj">
       <Project>{08B07E65-83A2-4F68-9B43-18A139C038EE}</Project>
       <Name>CapaEntidad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaSoporte\CapaSoporte.csproj">
+      <Project>{7a4b123e-5975-44a6-9628-087faf0f4966}</Project>
+      <Name>CapaSoporte</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -68,7 +68,7 @@
             this.panelClientesSubmenu = new System.Windows.Forms.Panel();
             this.btnClienteEliminar = new System.Windows.Forms.Button();
             this.btnClienteActualizar = new System.Windows.Forms.Button();
-            this.btnClienteIngresar = new System.Windows.Forms.Button();
+            this.btnGestionClientes = new System.Windows.Forms.Button();
             this.btnClientes = new FontAwesome.Sharp.IconButton();
             this.panelProductosSubmenu = new System.Windows.Forms.Panel();
             this.btnProductoEliminar = new System.Windows.Forms.Button();
@@ -77,6 +77,7 @@
             this.btnProductos = new FontAwesome.Sharp.IconButton();
             this.panelIzquierdo = new System.Windows.Forms.Panel();
             this.panelUsuario = new System.Windows.Forms.Panel();
+            this.txtIdImagen = new System.Windows.Forms.TextBox();
             this.btnEditarMiUsuario = new FontAwesome.Sharp.IconButton();
             this.lblRol = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
@@ -85,7 +86,6 @@
             this.panelCentral = new System.Windows.Forms.Panel();
             this.panelInferior = new System.Windows.Forms.Panel();
             this.panelDerecho = new System.Windows.Forms.Panel();
-            this.txtIdImagen = new System.Windows.Forms.TextBox();
             this.panelBarraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.piclogonegocio)).BeginInit();
             this.panelOpciones.SuspendLayout();
@@ -159,6 +159,7 @@
             this.btnMinimizar.Size = new System.Drawing.Size(38, 28);
             this.btnMinimizar.TabIndex = 46;
             this.btnMinimizar.UseVisualStyleBackColor = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
             // btnCerrar
             // 
@@ -309,6 +310,7 @@
             this.btnNegocio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNegocio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNegocio.UseVisualStyleBackColor = false;
+            this.btnNegocio.Visible = false;
             this.btnNegocio.Click += new System.EventHandler(this.btnNegocio_Click);
             // 
             // panelContabilidadSubmenu
@@ -401,6 +403,7 @@
             this.btnContabilidad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnContabilidad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnContabilidad.UseVisualStyleBackColor = false;
+            this.btnContabilidad.Visible = false;
             this.btnContabilidad.Click += new System.EventHandler(this.btnContabilidad_Click);
             // 
             // panelUsuariosSubmenu
@@ -478,6 +481,7 @@
             this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUsuarios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnUsuarios.UseVisualStyleBackColor = false;
+            this.btnUsuarios.Visible = false;
             this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
             // panelComprasSubmenu
@@ -571,6 +575,7 @@
             this.btnCompras.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCompras.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCompras.UseVisualStyleBackColor = false;
+            this.btnCompras.Visible = false;
             this.btnCompras.Click += new System.EventHandler(this.btnCompras_Click);
             // 
             // panelVentasSubmenu
@@ -663,6 +668,7 @@
             this.btnVentas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVentas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnVentas.UseVisualStyleBackColor = false;
+            this.btnVentas.Visible = false;
             this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
             // 
             // panelProveedoresSubmenu
@@ -755,6 +761,7 @@
             this.btnProveedores.Text = "Proveedores";
             this.btnProveedores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnProveedores.UseVisualStyleBackColor = false;
+            this.btnProveedores.Visible = false;
             this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
             // 
             // panelClientesSubmenu
@@ -762,7 +769,7 @@
             this.panelClientesSubmenu.BackColor = System.Drawing.Color.White;
             this.panelClientesSubmenu.Controls.Add(this.btnClienteEliminar);
             this.panelClientesSubmenu.Controls.Add(this.btnClienteActualizar);
-            this.panelClientesSubmenu.Controls.Add(this.btnClienteIngresar);
+            this.panelClientesSubmenu.Controls.Add(this.btnGestionClientes);
             this.panelClientesSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelClientesSubmenu.ForeColor = System.Drawing.Color.Black;
             this.panelClientesSubmenu.Location = new System.Drawing.Point(0, 191);
@@ -805,22 +812,23 @@
             this.btnClienteActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClienteActualizar.UseVisualStyleBackColor = true;
             // 
-            // btnClienteIngresar
+            // btnGestionClientes
             // 
-            this.btnClienteIngresar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnClienteIngresar.FlatAppearance.BorderSize = 0;
-            this.btnClienteIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClienteIngresar.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClienteIngresar.ForeColor = System.Drawing.Color.Black;
-            this.btnClienteIngresar.Location = new System.Drawing.Point(0, 0);
-            this.btnClienteIngresar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnClienteIngresar.Name = "btnClienteIngresar";
-            this.btnClienteIngresar.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
-            this.btnClienteIngresar.Size = new System.Drawing.Size(188, 32);
-            this.btnClienteIngresar.TabIndex = 0;
-            this.btnClienteIngresar.Text = "Ingresar Cliente";
-            this.btnClienteIngresar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClienteIngresar.UseVisualStyleBackColor = true;
+            this.btnGestionClientes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGestionClientes.FlatAppearance.BorderSize = 0;
+            this.btnGestionClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGestionClientes.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGestionClientes.ForeColor = System.Drawing.Color.Black;
+            this.btnGestionClientes.Location = new System.Drawing.Point(0, 0);
+            this.btnGestionClientes.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGestionClientes.Name = "btnGestionClientes";
+            this.btnGestionClientes.Padding = new System.Windows.Forms.Padding(26, 0, 0, 0);
+            this.btnGestionClientes.Size = new System.Drawing.Size(188, 32);
+            this.btnGestionClientes.TabIndex = 0;
+            this.btnGestionClientes.Text = "Gestión de Clientes";
+            this.btnGestionClientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGestionClientes.UseVisualStyleBackColor = true;
+            this.btnGestionClientes.Click += new System.EventHandler(this.btnGestionClientes_Click);
             // 
             // btnClientes
             // 
@@ -833,7 +841,7 @@
             this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClientes.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClientes.ForeColor = System.Drawing.Color.Black;
-            this.btnClientes.IconChar = FontAwesome.Sharp.IconChar.PeopleCarry;
+            this.btnClientes.IconChar = FontAwesome.Sharp.IconChar.PeopleGroup;
             this.btnClientes.IconColor = System.Drawing.Color.Black;
             this.btnClientes.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnClientes.IconSize = 40;
@@ -848,6 +856,7 @@
             this.btnClientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClientes.UseVisualStyleBackColor = false;
+            this.btnClientes.Visible = false;
             this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
             // panelProductosSubmenu
@@ -943,6 +952,7 @@
             this.btnProductos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnProductos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnProductos.UseVisualStyleBackColor = false;
+            this.btnProductos.Visible = false;
             this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
             // 
             // panelIzquierdo
@@ -970,6 +980,20 @@
             this.panelUsuario.Name = "panelUsuario";
             this.panelUsuario.Size = new System.Drawing.Size(205, 157);
             this.panelUsuario.TabIndex = 23;
+            // 
+            // txtIdImagen
+            // 
+            this.txtIdImagen.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdImagen.Location = new System.Drawing.Point(169, 6);
+            this.txtIdImagen.MaxLength = 32;
+            this.txtIdImagen.Name = "txtIdImagen";
+            this.txtIdImagen.ShortcutsEnabled = false;
+            this.txtIdImagen.Size = new System.Drawing.Size(30, 22);
+            this.txtIdImagen.TabIndex = 203;
+            this.txtIdImagen.TabStop = false;
+            this.txtIdImagen.Text = "1";
+            this.txtIdImagen.Visible = false;
+            this.txtIdImagen.TextChanged += new System.EventHandler(this.txtIdImagen_TextChanged);
             // 
             // btnEditarMiUsuario
             // 
@@ -1057,20 +1081,6 @@
             this.panelDerecho.Size = new System.Drawing.Size(3, 603);
             this.panelDerecho.TabIndex = 0;
             // 
-            // txtIdImagen
-            // 
-            this.txtIdImagen.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdImagen.Location = new System.Drawing.Point(169, 6);
-            this.txtIdImagen.MaxLength = 32;
-            this.txtIdImagen.Name = "txtIdImagen";
-            this.txtIdImagen.ShortcutsEnabled = false;
-            this.txtIdImagen.Size = new System.Drawing.Size(30, 22);
-            this.txtIdImagen.TabIndex = 203;
-            this.txtIdImagen.TabStop = false;
-            this.txtIdImagen.Text = "1";
-            this.txtIdImagen.Visible = false;
-            this.txtIdImagen.TextChanged += new System.EventHandler(this.txtIdImagen_TextChanged);
-            // 
             // frmInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1142,7 +1152,7 @@
         private System.Windows.Forms.Panel panelClientesSubmenu;
         private System.Windows.Forms.Button btnClienteEliminar;
         private System.Windows.Forms.Button btnClienteActualizar;
-        private System.Windows.Forms.Button btnClienteIngresar;
+        private System.Windows.Forms.Button btnGestionClientes;
         private FontAwesome.Sharp.IconButton btnClientes;
         private System.Windows.Forms.Panel panelProductosSubmenu;
         private System.Windows.Forms.Button btnProductoEliminar;

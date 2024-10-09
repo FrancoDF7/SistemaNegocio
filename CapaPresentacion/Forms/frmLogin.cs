@@ -43,18 +43,27 @@ namespace CapaPresentacion.Forms
 
             if (ousuario != null)
             {
-                 //Le envia al constructor del formulario Inicio los datos del usuario que encontro
-                frmInicio form = new frmInicio(ousuario);
+                //Verifica que el usuario este activo
+                if (ousuario.Estado == true)
+                {
+                    //Le envia al constructor del formulario Inicio los datos del usuario que encontro
+                    frmInicio form = new frmInicio(ousuario);
 
-                form.Show();
-                this.Hide();
+                    form.Show();
+                    this.Hide();
 
-                //Llama al metodo frm_closing para que cuando el formulario Inicio se cierre.
-                form.FormClosing += frm_closing;
+                    //Llama al metodo frm_closing para que cuando el formulario Inicio se cierre.
+                    form.FormClosing += frm_closing;
+                }
+                else
+                {
+                    MessageBox.Show("El usuario ingresado no se encuentra activo", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
             }
             else
             {
-                MessageBox.Show("No se encontro el usuario", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("No se encontró el usuario", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -66,6 +75,8 @@ namespace CapaPresentacion.Forms
 
             //Muestra el formulario
             this.Show();
+
+            txtusuario.Select();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

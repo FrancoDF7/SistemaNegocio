@@ -63,7 +63,7 @@ namespace CapaPresentacion.Forms.FormNegocio
             Negocio obj = new Negocio()
             {
                 Nombre = txtnombrenegocio.Text,
-                CUIT = txtcuit1.Text + "-" + txtcuit2.Text + "-" + txtcuit3.Text,
+                CUIT = txtcuit1.Text  + txtcuit2.Text + txtcuit3.Text,
                 Calle = txtcalle.Text,
                 Localidad = txtlocalidad.Text,
                 Partido = txtpartido.Text,

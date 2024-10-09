@@ -115,8 +115,8 @@ namespace CapaDatos
 
         public bool Editar(Usuario obj, out string Mensaje)
         {
-            Mensaje = string.Empty;
             bool resultado = false;
+            Mensaje = string.Empty;            
 
             try
             {

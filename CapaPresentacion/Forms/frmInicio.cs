@@ -2,6 +2,7 @@
 using CapaNegocio;
 using CapaPresentacion.Forms.FormNegocio;
 using CapaPresentacion.Forms.FormUsuario;
+using CapaPresentacion.Forms.FormCliente;
 using CapaSoporte;
 using CapaSoporte.Utilidades;
 using FontAwesome.Sharp;
@@ -45,6 +46,9 @@ namespace CapaPresentacion.Forms
             CN_Usuario cn_Usuario = new CN_Usuario();
             cn_Usuario.RegistraLogin(Usuario.UsuarioLogeado.NombreUsuario); //Registra login en la bitacora
 
+            //FALTA ESPEFICAR QUE BOTONES SE DEJARA SELECCIONAR DENTRO DEL SUBMENU AL EMPLEADO
+            CargaPermisos();
+
             #region Muestra datos del usuario logeado
             txtIdImagen.Text = Usuario.UsuarioLogeado.IdImagen.ToString();
             lblUsuario.Text = Usuario.UsuarioLogeado.NombreUsuario;
@@ -52,7 +56,6 @@ namespace CapaPresentacion.Forms
             #endregion
             InicializarSubmenus();
         }
-
 
         #region Eventos mover formulario
         private void panelBarraTitulo_MouseDown(object sender, MouseEventArgs e)
@@ -83,6 +86,12 @@ namespace CapaPresentacion.Forms
         {
             MostrarSubmenu(panelClientesSubmenu);
         }
+
+        private void btnGestionClientes_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(null, btnGestionClientes, new frmGestionClientes());
+        }
+
         #endregion
 
         #region Eventos botones Proveedores
@@ -113,7 +122,7 @@ namespace CapaPresentacion.Forms
         }
         private void btnGestionUsuarios_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(null, btnGestionUsuarios, new frmCrearUsuario());
+            AbrirFormulario(null, btnGestionUsuarios, new frmGestionUsuarios());
         }
         private void btnUsuariosPerfil_Click(object sender, EventArgs e)
         {
@@ -294,9 +303,29 @@ namespace CapaPresentacion.Forms
                 EstablecerBackColorBlanco(childControl);
             }
         }
+        public void CargaPermisos()
+        {
+            List<Permiso> ListaPermisos = new CN_Permiso().Listar(Usuario.UsuarioLogeado.IdUsuario);
 
-
-
+            //Si la cantidad de registros devueltos es mayor a 2 es un usuario
+            //con rol de Administrador de lo contrario es un empleado
+            if (ListaPermisos.Count > 2)
+            {
+                btnProductos.Visible = true;
+                btnClientes.Visible = true;
+                btnProveedores.Visible = true;
+                btnVentas.Visible = true;
+                btnCompras.Visible = true;
+                btnUsuarios.Visible = true;
+                btnContabilidad.Visible = true;
+                btnNegocio.Visible = true;
+            }
+            else
+            {
+                btnClientes.Visible = true;
+                btnVentas.Visible = true;
+            }
+        }
 
         #endregion
 
@@ -311,5 +340,12 @@ namespace CapaPresentacion.Forms
         {
             iconoUsuario.ImageLocation = RutaImagenes.DevuelveRutaDeImagenes(txtIdImagen.Text);
         }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+
     }
 }

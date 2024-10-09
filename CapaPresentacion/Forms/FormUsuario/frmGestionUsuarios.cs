@@ -18,20 +18,24 @@ using CapaPresentacion.MessageBoxCustom;
 
 namespace CapaPresentacion.Forms.FormUsuario
 {
-    public partial class frmCrearUsuario : Form
+    public partial class frmGestionUsuarios : Form
     {
         //FALTA AGREGARLE QUE SE CAMBIE EL ICONO DEL USUARIO EN FRMINICIO SI QUE SE EDITA EL USUARIO LOGEADO EN ES MOMENTO
 
-
+        //VARIABLES E INSTANCIAS
         private DialogResult respuesta;
-
-        public frmCrearUsuario()
+        
+        // CONSTRUCTOR *********************************************************************//
+        public frmGestionUsuarios()
         {
             InitializeComponent();
         }
 
-        //Evento Load
-        private void frmCrearUsuario_Load(object sender, EventArgs e)
+
+        #region Eventos
+
+        // EVENTO LOAD DEL FORMULARIO *******************************************************//
+        private void frmGestionUsuarios_Load(object sender, EventArgs e)
         {
             txtDocumento.Select();
 
@@ -45,12 +49,9 @@ namespace CapaPresentacion.Forms.FormUsuario
             Carga_dgvData();
 
             Carga_cboBusqueda();
-
-            //Autocompleta al escribir en el txtBusqueda
-            AutoCompletado.Autocompletar_Textbox(cboBusqueda);
         }
 
-        #region Eventos Click
+        // EVENTOS DE BOTONES***************************************************************//
 
         //Boton para guardar y editar usuarios
         private void btnGuardarCambios_Click(object sender, EventArgs e)
@@ -64,7 +65,7 @@ namespace CapaPresentacion.Forms.FormUsuario
                 NombreUsuario = txtNombreUsuario.Text.Trim(),
                 Nombre = txtNombre.Text.Trim(),
                 Apellido = txtApellido.Text.Trim(),
-                Correo = txtCorreo.Text.Trim(),
+                Correo = txtCorreo.Text.ToLower().Trim(),
                 Clave = txtClave.Text,
                 ConfirmarClave = txtConfirmarClave.Text,
                 oRol = new Rol() { IdRol = Convert.ToInt32(((OpcionCombo)cboRol.SelectedItem).Valor) },
@@ -76,7 +77,7 @@ namespace CapaPresentacion.Forms.FormUsuario
             //de lo contrario significa que se esta editando un usuario existente.
             if (obj.IdUsuario == 0)
             {
-                if (MessageBox.Show("¿Desea crear un nuevo usuario?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("¿Desea registrar un nuevo usuario?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     //REGISTRAR NUEVO USUARIO
                     int idgenerado = new CN_Usuario().Registrar(obj, out mensaje);
@@ -85,7 +86,7 @@ namespace CapaPresentacion.Forms.FormUsuario
                     if (idgenerado != 0)
                     {
                         //Carga datagridview con los datos del nuevo usuario, el primer valor lleva "" ya que no posee un valor como tal porque es un botón
-                        dgvdata.Rows.Add(new object[] {"", idgenerado, txtDocumento.Text, txtNombreUsuario.Text, txtNombre.Text, txtApellido.Text, txtCorreo.Text, txtClave.Text,
+                        dgvData.Rows.Add(new object[] {"", idgenerado, txtDocumento.Text, txtNombreUsuario.Text, txtNombre.Text, txtApellido.Text, txtCorreo.Text, txtClave.Text,
                 ((OpcionCombo)cboRol.SelectedItem).Valor.ToString(),
                 ((OpcionCombo)cboRol.SelectedItem).Texto.ToString(),
                 ((OpcionCombo)cboEstado.SelectedItem).Valor.ToString(),
@@ -113,7 +114,7 @@ namespace CapaPresentacion.Forms.FormUsuario
                     //Actualiza en el dgvdata la fila que corresponda con los nuevos valores del usuario que se edito
                     if (resultado)
                     {
-                        DataGridViewRow row = dgvdata.Rows[Convert.ToInt32(txtIndice.Text)];
+                        DataGridViewRow row = dgvData.Rows[Convert.ToInt32(txtIndice.Text)];
 
                         row.Cells["Id"].Value = txtId.Text;
                         row.Cells["Documento"].Value = txtDocumento.Text;
@@ -164,11 +165,11 @@ namespace CapaPresentacion.Forms.FormUsuario
         {
             string columnaFiltro = ((OpcionCombo)cboBusqueda.SelectedItem).Valor.ToString();
 
-            if (dgvdata.Rows.Count > 0)
+            if (dgvData.Rows.Count > 0)
             {
                 //Para cada fila, verifica si el valor de la celda en la columna especificada contiene el texto de búsqueda (txtbusqueda).
                 //Si lo contiene, la fila se hace visible; de lo contrario, se oculta.
-                foreach (DataGridViewRow row in dgvdata.Rows)
+                foreach (DataGridViewRow row in dgvData.Rows)
                 {
                     //Se utiliza ToUpper para convertir ambos texto a mayuscula
                     //para de esta forma forza a coincidan los textos
@@ -185,7 +186,7 @@ namespace CapaPresentacion.Forms.FormUsuario
         private void btnlimpiarbuscador_Click(object sender, EventArgs e)
         {
             txtBusqueda.Text = "";
-            foreach (DataGridViewRow row in dgvdata.Rows)
+            foreach (DataGridViewRow row in dgvData.Rows)
             {
                 row.Visible = true;
             }
@@ -207,7 +208,7 @@ namespace CapaPresentacion.Forms.FormUsuario
         private void btnexportar_Click(object sender, EventArgs e)
         {
             //Valida que haya registros en el dgvdata
-            if (dgvdata.Rows.Count < 1)
+            if (dgvData.Rows.Count < 1)
             {
                 MessageBox.Show("No hay datos para exportar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
@@ -216,15 +217,15 @@ namespace CapaPresentacion.Forms.FormUsuario
                 DataTable dt = new DataTable();
 
                 //Siempre y cuando se cumplan las condiciones del if dentro de foreach,
-                //lo que se hara es agregar una nueva columna al DataTable dt con el mismo nombre que la cabecera de la columna.
-                foreach (DataGridViewColumn columna in dgvdata.Columns)
+                //se agregar una nueva columna al DataTable dt con el mismo nombre que la cabecera de la columna.
+                foreach (DataGridViewColumn columna in dgvData.Columns)
                 {
                     if (columna.HeaderText != "" && columna.Visible == true)
                         dt.Columns.Add(columna.HeaderText, typeof(string));
                 }
 
                 //Inserta la filas de el dgvdata
-                foreach (DataGridViewRow row in dgvdata.Rows)
+                foreach (DataGridViewRow row in dgvData.Rows)
                 {
                     if (row.Visible == true)
                     {
@@ -246,7 +247,7 @@ namespace CapaPresentacion.Forms.FormUsuario
                 savefile.FileName = string.Format("ReporteUsuarios_{0}.xlsx", DateTime.Now.ToString("ddMMyyyyHHmmss")); //Nombre del archivo excel junto con su fecha de creacion
                 savefile.Filter = "Excel Files | *xlsx"; //Filtra "hace visible" solamente archivos con la extension xlsx
 
-                //Evento que se dispara cuando se presionar aceptar para guardar
+                //Evento que se dispara cuando se presiona aceptar para guardar
                 //el archivo en la ubicacion que hallamos seleccionado
                 if (savefile.ShowDialog() == DialogResult.OK)
                 {
@@ -267,9 +268,7 @@ namespace CapaPresentacion.Forms.FormUsuario
 
         }
 
-        #endregion
-
-        #region Otros Eventos
+        // OTROS EVENTOS *********************************************************//
 
         //Agrega una imagen boton para seleccionar un usuario en el dgvData
         private void dgvdata_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -295,31 +294,31 @@ namespace CapaPresentacion.Forms.FormUsuario
         //Se encarga de completar los campos de texto y combobox con los datos del usuario que se va editar, obteniendo los datos de dgvdata.
         private void dgvdata_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvdata.Columns[e.ColumnIndex].Name == "btnseleccionar")
+            if (dgvData.Columns[e.ColumnIndex].Name == "btnseleccionar")
             {
                 int indice = e.RowIndex; //Obtiene el indice de la fila seleccionada
 
                 if (indice >= 0)
                 {
                     txtIndice.Text = indice.ToString();
-                    txtId.Text = dgvdata.Rows[indice].Cells["Id"].Value.ToString();
-                    txtDocumento.Text = dgvdata.Rows[indice].Cells["Documento"].Value.ToString();
-                    txtNombreUsuario.Text = dgvdata.Rows[indice].Cells["NombreUsuario"].Value.ToString();
-                    txtNombre.Text = dgvdata.Rows[indice].Cells["Nombre"].Value.ToString();
-                    txtApellido.Text = dgvdata.Rows[indice].Cells["Apellido"].Value.ToString();
-                    txtCorreo.Text = dgvdata.Rows[indice].Cells["Correo"].Value.ToString();
-                    txtClave.Text = dgvdata.Rows[indice].Cells["Clave"].Value.ToString();
-                    txtConfirmarClave.Text = dgvdata.Rows[indice].Cells["Clave"].Value.ToString();
-                    txtIdImagen.Text = dgvdata.Rows[indice].Cells["IdImagen"].Value.ToString();
+                    txtId.Text = dgvData.Rows[indice].Cells["Id"].Value.ToString();
+                    txtDocumento.Text = dgvData.Rows[indice].Cells["Documento"].Value.ToString();
+                    txtNombreUsuario.Text = dgvData.Rows[indice].Cells["NombreUsuario"].Value.ToString();
+                    txtNombre.Text = dgvData.Rows[indice].Cells["Nombre"].Value.ToString();
+                    txtApellido.Text = dgvData.Rows[indice].Cells["Apellido"].Value.ToString();
+                    txtCorreo.Text = dgvData.Rows[indice].Cells["Correo"].Value.ToString();
+                    txtClave.Text = dgvData.Rows[indice].Cells["Clave"].Value.ToString();
+                    txtConfirmarClave.Text = dgvData.Rows[indice].Cells["Clave"].Value.ToString();
+                    txtIdImagen.Text = dgvData.Rows[indice].Cells["IdImagen"].Value.ToString();
 
                     //Muestra imagen que le corresponde al usuario cuando lo selecciona en el dgvdata
-                    iconoUsuario.ImageLocation = RutaImagenes.DevuelveRutaDeImagenes(dgvdata.Rows[indice].Cells["IdImagen"].Value.ToString());
+                    iconoUsuario.ImageLocation = RutaImagenes.DevuelveRutaDeImagenes(dgvData.Rows[indice].Cells["IdImagen"].Value.ToString());
 
                     //Muestra en el combobox cborol el rol que le corresponda al usuario que se selecciono
                     foreach (OpcionCombo oc in cboRol.Items)
                     {
                         //Valida que valor del combo sea el mismo que el de rol del usuario
-                        if (Convert.ToInt32(oc.Valor) == Convert.ToInt32(dgvdata.Rows[indice].Cells["IdRol"].Value))
+                        if (Convert.ToInt32(oc.Valor) == Convert.ToInt32(dgvData.Rows[indice].Cells["IdRol"].Value))
                         {
                             int indice_combo = cboRol.Items.IndexOf(oc);
                             cboRol.SelectedIndex = indice_combo;
@@ -331,7 +330,7 @@ namespace CapaPresentacion.Forms.FormUsuario
                     foreach (OpcionCombo oc in cboEstado.Items)
                     {
                         //Valida que valor del combo sea el mismo que el de estado del usuario
-                        if (Convert.ToInt32(oc.Valor) == Convert.ToInt32(dgvdata.Rows[indice].Cells["EstadoValor"].Value))
+                        if (Convert.ToInt32(oc.Valor) == Convert.ToInt32(dgvData.Rows[indice].Cells["EstadoValor"].Value))
                         {
                             int indice_combo = cboEstado.Items.IndexOf(oc);
                             cboEstado.SelectedIndex = indice_combo;
@@ -357,12 +356,34 @@ namespace CapaPresentacion.Forms.FormUsuario
             //Vacia textbox al cambiar de opcion en el combobox
             txtBusqueda.Text = "";
 
-            txtBusqueda.AutoCompleteCustomSource = AutoCompletado.Autocompletar_Textbox(cboBusqueda);
+            txtBusqueda.AutoCompleteCustomSource = AutoCompletado.Carga_Autocompletado(cboBusqueda, "Usuario");
+        }
+
+
+        #region Eventos KeyPress
+        private void txtDocumento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidacionKeyPress.SoloNumerosEnteros(e);
+        }
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidacionKeyPress.SoloLetras(e);
+        }
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidacionKeyPress.SoloLetras(e);
+        }
+        private void txtNombreUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidacionKeyPress.Valida_NombreUsuario(e);
         }
         #endregion
 
-        #region Metodos
+        #endregion
 
+
+        // METODOS ******************************************************************//
+        #region Metodos
         private void Limpiar()
         {
             txtDocumento.Text = "";
@@ -373,7 +394,7 @@ namespace CapaPresentacion.Forms.FormUsuario
             txtClave.Text = "";
             txtConfirmarClave.Text = "";
 
-            txtIndice.Text = "0";
+            txtIndice.Text = "-1";
             txtId.Text = "0";
             txtIdImagen.Text = "1";
 
@@ -414,7 +435,7 @@ namespace CapaPresentacion.Forms.FormUsuario
 
             foreach (Usuario item in listaUsuario)
             {
-                dgvdata.Rows.Add(new object[] {"", item.IdUsuario, item.Documento, item.NombreUsuario, item.Nombre, item.Apellido, item.Correo, item.Clave,
+                dgvData.Rows.Add(new object[] {"", item.IdUsuario, item.Documento, item.NombreUsuario, item.Nombre, item.Apellido, item.Correo, item.Clave,
                 item.oRol.IdRol,
                 item.oRol.Descripcion,
                 item.Estado == true ? 1 : 0,  //Si es true muestra 1 de lo contrario 0
@@ -427,7 +448,7 @@ namespace CapaPresentacion.Forms.FormUsuario
         public void Carga_cboBusqueda()
         {
             //Carga el combobox cbobusqueda con los valores de los titulos de las columnas del dgvdata
-            foreach (DataGridViewColumn columna in dgvdata.Columns)
+            foreach (DataGridViewColumn columna in dgvData.Columns)
             {
                 if (columna.Visible == true && columna.Name != "btnseleccionar")
                 {
@@ -456,32 +477,7 @@ namespace CapaPresentacion.Forms.FormUsuario
             //Comentario: //Les agregue un IconSize diferente porque el tamaño de los iconos no se ven del mismo tamaño cuando cambian
         }
 
-        #endregion
+        #endregion    
 
-        #region Validaciones KeyPress
-        private void txtDocumento_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ValidacionKeyPress.SoloNumerosEnteros(e);
-        }
-
-        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ValidacionKeyPress.SoloLetras(e);
-        }
-
-        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ValidacionKeyPress.SoloLetras(e);
-        }
-        private void txtNombreUsuario_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ValidacionKeyPress.Valida_NombreUsuario(e);
-        }
-        #endregion
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

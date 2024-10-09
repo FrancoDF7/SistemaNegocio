@@ -40,18 +40,14 @@ namespace CapaDatos
                                 FechaInicioActividades = dr["FechaInicioActividades"].ToString(),
                             };
 
-                            //Separar el CUIT
+                            //Separa el CUIT
+                            obj.CuitParte1 = obj.CUIT.Substring(0, 2);
+                            obj.CuitParte2 = obj.CUIT.Substring(2, 8);
+                            obj.CuitParte3 = obj.CUIT.Substring(10, 1);
+
+                            //Separar el DIRECCION
                             //StringSplitOptions.RemoveEmptyEntries: Remueve entradas vacias en el caso de que
                             //haya dos separadores - consecutivos, por ejemplo Brasil 2200 - - Avellaneda - Buenos Aires.
-                            string[] partesCUIT = obj.CUIT.Split(new[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
-                            if (partesCUIT.Length >= 3)
-                            {
-                                obj.CuitParte1 = partesCUIT[0];
-                                obj.CuitParte2 = partesCUIT[1];
-                                obj.CuitParte3 = partesCUIT[2];
-                            }
-
-                            //Separar la direccion
                             string[] partesDireccion = obj.Direccion.Split(new[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
                             if (partesDireccion.Length >= 4)
                             {

@@ -48,6 +48,7 @@
     <Compile Include="Utilidades\AutoCompletado.cs" />
     <Compile Include="Utilidades\OpcionCombo.cs" />
     <Compile Include="Utilidades\RutaImagenes.cs" />
+    <Compile Include="Validaciones\ValidacionCUIT.cs" />
     <Compile Include="Validaciones\ValidacionKeyPress.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -15,10 +15,16 @@ namespace CapaSoporte.Utilidades
     public static class AutoCompletado
     {
 
-        public static AutoCompleteStringCollection Autocompletar_Textbox(ComboBox cbo)
+        //Se encarga de retornar el diccionary y consulta segun el parametro nombreTabla
+        //Este metodo es utilizado en el metodo Carga_Autocompletado
+        private static Dictionary<string, string> ObtenerOpcionesYConsulta(string nombreTabla, out string consulta)
         {
-            var opcionesColumnas = new Dictionary<string, string>
+
+            // { "Texto del CombobBox", "Nombre del Campo de Consulta"}
+
+            if (nombreTabla == "Usuario")
             {
+                var opcionesUsuario = new Dictionary<string, string>{
                 { "Nro Documento", "Documento" },
                 { "Nombre de Usuario", "NombreUsuario" },
                 { "Nombre", "Nombre" },
@@ -28,26 +34,57 @@ namespace CapaSoporte.Utilidades
                 { "Estado", "Estado" }
             };
 
+                consulta = "SELECT u.Documento, u.NombreUsuario, u.Nombre, u.Apellido, u.Correo, u.Estado, r.Descripcion FROM Usuario u INNER JOIN Rol r ON r.IdRol = u.IdRol";
+
+                return opcionesUsuario;
+            }
+
+            if (nombreTabla == "Cliente")
+            {
+                var opcionCliente = new Dictionary<string, string>
+            {
+                { "Nro Documento", "Documento" },
+                { "CUIT", "CUIT" },
+                { "Nombre Completo / Razón Social", "NombreCompleto" },
+                { "Dirección", "Direccion" },
+                { "Teléfono", "Telefono" },
+                { "Correo Electrónico", "Correo" },
+                { "Condición Fiscal", "Descripcion" },
+            };
+
+                consulta = "SELECT c.Documento, c.CUIT, c.NombreCompleto, c.Direccion, c.Telefono,c.Correo, cf.Descripcion FROM Cliente c INNER JOIN CondicionFiscal cf ON c.IdCondicionFiscal = cf.IdCondicionFiscal";
+
+                return opcionCliente;
+            }
+
+            // Retorna un diccionario y una consulta vacíos si no se cumple ninguna condición
+            consulta = "";
+            return new Dictionary<string, string>();
+        }
+
+
+
+        public static AutoCompleteStringCollection Carga_Autocompletado(ComboBox cbo, string nombreTabla)
+        {
+            var opciones = ObtenerOpcionesYConsulta(nombreTabla, out string consulta);
+
             string opcionSeleccionada = cbo.Text;
 
             // Obtener el nombre de la columna correspondiente
-            if (!opcionesColumnas.TryGetValue(opcionSeleccionada, out string nombreColumna))
+            if (!opciones.TryGetValue(opcionSeleccionada, out string nombreColumna))
             {
                 throw new ArgumentException("Opción no válida seleccionada en el ComboBox");
-            }           
+            }
 
             DataTable dt = new DataTable();
 
             AutoCompleteStringCollection lista = new AutoCompleteStringCollection();
 
-            SqlDataAdapter adaptador = new SqlDataAdapter("SELECT u.Documento, u.NombreUsuario, u.Nombre, u.Apellido," +
-                " u.Correo, u.Estado, r.Descripcion " +
-                "FROM Usuario u INNER JOIN Rol r ON r.IdRol = u.IdRol", Conexion.cadena);
+            //Se le pasa el parametro llamado "consulta" obtenido a travez del metodo OpcionesColumnas
+            SqlDataAdapter adapter = new SqlDataAdapter(consulta, Conexion.cadena);
 
-            //Almacena resultado de la consulta en el DataTable
-            adaptador.Fill(dt);
+            adapter.Fill(dt);
 
-            
             if (nombreColumna != "Estado")
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
@@ -60,12 +97,13 @@ namespace CapaSoporte.Utilidades
                 //Le agregue directamente el valor al autocompletado 
                 //por que la columna Estado es de tipo bit devuelve 1 y 0.
                 lista.Add("Activo");
-                lista.Add("No activo");
+                lista.Add("No Activo");
             }
-
 
             return lista;
         }
+
+
 
     }
 }

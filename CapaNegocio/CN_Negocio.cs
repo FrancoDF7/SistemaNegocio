@@ -25,7 +25,7 @@ namespace CapaNegocio
             {
                 Mensaje += "Es necesario el nombre de el negocio\n";
             }
-            if (obj.CUIT.Length != 13)
+            if (obj.CUIT.Length != 11)
             {
                 Mensaje += "Es necesario el número de CUIT completo\n";
             }

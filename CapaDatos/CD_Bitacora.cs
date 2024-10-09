@@ -12,7 +12,7 @@ namespace CapaDatos
 {
     public class CD_Bitacora
     {
-
+        // Listar registros de la bitacora
         public List<Bitacora> Listar()
         {
             List<Bitacora> lista = new List<Bitacora>();

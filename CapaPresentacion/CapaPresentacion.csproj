@@ -127,6 +127,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\FormCliente\frmGestionClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormCliente\frmGestionClientes.Designer.cs">
+      <DependentUpon>frmGestionClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormNegocio\frmBitacora.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,11 +145,11 @@
     <Compile Include="Forms\FormNegocio\frmNegocio.Designer.cs">
       <DependentUpon>frmNegocio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormUsuario\frmCrearUsuario.cs">
+    <Compile Include="Forms\FormUsuario\frmGestionUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormUsuario\frmCrearUsuario.Designer.cs">
-      <DependentUpon>frmCrearUsuario.cs</DependentUpon>
+    <Compile Include="Forms\FormUsuario\frmGestionUsuarios.Designer.cs">
+      <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormUsuario\frmEditarPerfil.cs">
       <SubType>Form</SubType>
@@ -208,14 +214,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FormCliente\frmGestionClientes.resx">
+      <DependentUpon>frmGestionClientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormNegocio\frmBitacora.resx">
       <DependentUpon>frmBitacora.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormNegocio\frmNegocio.resx">
       <DependentUpon>frmNegocio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormUsuario\frmCrearUsuario.resx">
-      <DependentUpon>frmCrearUsuario.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormUsuario\frmGestionUsuarios.resx">
+      <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormUsuario\frmEditarPerfil.resx">
       <DependentUpon>frmEditarPerfil.cs</DependentUpon>
@@ -279,6 +288,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />
+    <Folder Include="Forms\FormProducto\" />
+    <Folder Include="Forms\FormProveedor\" />
     <Folder Include="Modales\mdError\" />
   </ItemGroup>
   <ItemGroup>
